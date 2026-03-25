@@ -9,10 +9,10 @@ Breve descrição sobre seu projeto: A ideia é muito simples, dar um pouco mais
 ![Desktop](public/img/foto-topo-do-site.png)
 
 💻 Versão Desktop
-![Desktop](public/img/foto-corpo-do-site.png.png)
+![Desktop-ft2](public/img/foto-corpo-do-site.png.png)
 
 ## 📱 Versão Mobile
 ![Mobile](public/img/foto-topo-mobile.png)
 
 ## 📱 Versão Mobile
-![Mobile](public/img/foto-rodape-mobile.png.png)
+![Mobile-ft2](public/img/foto-rodape-mobile.png.png)
