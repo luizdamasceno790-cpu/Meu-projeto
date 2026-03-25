@@ -4,3 +4,6 @@ Proposta de projeto escolhida: Um site sobre o Mundo do Jiu Jitsu
 Breve descrição sobre seu projeto: A ideia é muito simples, dar um pouco mais de visibilidade para essa arte sensacional!!!
 
 ![Desktop](public/img/foto-topo-do-site.png)
+![Desktop](public/img/foto-corpo-do-site.png.png)
+![Mobile](public/img/foto-topo-mobile.png)
+![Mobile](public/img/foto-rodape-mobile.png.png)
