@@ -4,140 +4,202 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo JJ</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Seu CSS -->
     <link rel="stylesheet" href="styles.css">
+
     <script src="https://kit.fontawesome.com/98e97fbcca.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-<header class="header">
-    <i class="fa-solid fa-bars"></i>
-    <img src="./img/Logo.png" alt="Logo Mundo JJ" class="logo">
+<!-- HEADER -->
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center">
 
-    <form class="search-form">
-        <input type="text" placeholder="Buscar técnicas...">
-        <button type="submit">Buscar</button>
-    </form>
-</header>
+        <i class="fa-solid fa-bars"></i>
 
-<nav class="menu">
-    <ul>
-        <li>Home</li>
-        <li>Técnicas</li>
-        <li>Campeonatos</li>
-        <li>Atletas</li>
-    </ul>
-</nav>
+        <img src="./img/Logo.png" alt="Logo Mundo JJ" style="height:70px;">
 
-<main class="main">
-
-    <!-- COLUNA ESQUERDA -->
-    <div class="conteudo">
-
-        <section class="banner">
-            <img src="./img/Banner para site.png" alt="banner">
-            <h2>Aprenda Jiu-Jitsu do básico ao avançado</h2>
-        </section>
-
-        <!-- TEXTO INTRODUTÓRIO -->
-        <section class="intro">
-            <p>
-                O Mundo JJ é uma plataforma dedicada ao ensino e divulgação do Jiu-Jitsu,
-                trazendo técnicas, atletas e novidades do universo da luta.
-            </p>
-        </section>
-
-        <section class="tecnicas">
-            <h2>Técnicas recomendadas</h2>
-
-            <div class="cards">
-
-                <article class="card">
-                    <img src="./img/armlock.png">
-                    <h3>Arm Lock</h3>
-                    <p>Finalização clássica de braço.</p>
-                </article>
-
-                <article class="card">
-                    <img src="./img/Arco e Flecha.png">
-                    <h3>Arco e Flecha</h3>
-                    <p>Estrangulamento com a lapela.</p>
-                </article>
-
-                <article class="card">
-                    <img src="./img/Kimura.png">
-                    <h3>Kimura</h3>
-                    <p>Chave de braço muito eficaz.</p>
-                </article>
-
-                <article class="card">
-                    <img src="./img/Mata leão.png">
-                    <h3>Mata Leão</h3>
-                    <p>Finalização por estrangulamento.</p>
-                </article>
-
-            </div>
-        </section>
-
-        <section class="atletas">
-            <h2>Atletas brasileiros em destaque</h2>
-
-            <div class="cards">
-
-                <article class="card">
-                    <img src="./img/Foto Mica.png">
-                    <h3>Mica Galvão</h3>
-                    <p>Um dos maiores nomes da nova geração.</p>
-                </article>
-
-                <article class="card">
-                    <img src="./img/Irmaos Miau.png">
-                    <h3>Irmãos Miau</h3>
-                    <p>Referência mundial no Jiu-Jitsu.</p>
-                </article>
-
-                <article class="card">
-                    <img src="./img/Diogo Reis.png">
-                    <h3>Diogo Reis</h3>
-                    <p>Destaque no cenário competitivo.</p>
-                </article>
-
-                <article class="card">
-                    <img src="./img/Rafael Mendes.png">
-                    <h3>Rafael Mendes</h3>
-                    <p>Lenda do Jiu-Jitsu mundial.</p>
-                </article>
-
-            </div>
-        </section>
+        <form class="d-flex gap-2">
+            <input class="form-control" type="text" placeholder="Buscar técnicas...">
+            <button class="btn btn-light">Buscar</button>
+        </form>
 
     </div>
+</header>
 
-    <!-- COLUNA DIREITA -->
-    <div class="lateral">
+<!-- MENU -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Técnicas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Campeonatos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Atletas</a></li>
+        </ul>
+    </div>
+</nav>
 
-        <section class="cadastro">
-            <h2>Receba Novidades</h2>
-            <p>
-                Cadastre-se para receber notificações sobre novas técnicas,
-                atletas e campeonatos do Mundo JJ.
-            </p>
+<!-- MAIN -->
+<main class="container my-4">
 
-            <form class="form-cadastro">
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="Email">
-                <button type="submit">Cadastrar</button>
-            </form>
-        </section>
+    <div class="row">
+
+        <!-- COLUNA ESQUERDA -->
+        <div class="col-md-8">
+
+            <!-- BANNER -->
+            <section class="mb-4">
+                <img src="./img/Banner para site.png" class="img-fluid w-100" alt="Banner Mundo JJ">
+                <h2 class="mt-2">Aprenda Jiu-Jitsu do básico ao avançado</h2>
+            </section>
+
+            <!-- INTRO -->
+            <section class="mb-4">
+                <p>
+                    O Mundo JJ é uma plataforma dedicada ao ensino e divulgação do Jiu-Jitsu,
+                    trazendo técnicas, atletas e novidades do universo da luta.
+                </p>
+            </section>
+
+            <!-- TECNICAS -->
+            <section class="mb-4">
+                <h2>Técnicas recomendadas</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/armlock.png" class="card-img-top" alt="Arm Lock">
+                            <div class="card-body">
+                                <h5 class="card-title">Arm Lock</h5>
+                                <p class="card-text">Finalização clássica de braço.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Arco e Flecha.png" class="card-img-top" alt="Arco e Flecha">
+                            <div class="card-body">
+                                <h5 class="card-title">Arco e Flecha</h5>
+                                <p class="card-text">Estrangulamento com a lapela.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Kimura.png" class="card-img-top" alt="Kimura">
+                            <div class="card-body">
+                                <h5 class="card-title">Kimura</h5>
+                                <p class="card-text">Chave de braço muito eficaz.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Mata leão.png" class="card-img-top" alt="Mata Leão">
+                            <div class="card-body">
+                                <h5 class="card-title">Mata Leão</h5>
+                                <p class="card-text">Finalização por estrangulamento.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ATLETAS -->
+            <section>
+                <h2>Atletas brasileiros em destaque</h2>
+
+                <div class="row">
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Foto Mica.png" class="card-img-top" alt="Mica Galvão">
+                            <div class="card-body">
+                                <h5 class="card-title">Mica Galvão</h5>
+                                <p class="card-text">Um dos maiores nomes da nova geração.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Irmaos Miau.png" class="card-img-top" alt="Irmãos Miau">
+                            <div class="card-body">
+                                <h5 class="card-title">Irmãos Miau</h5>
+                                <p class="card-text">Referência mundial no Jiu-Jitsu.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Diogo Reis.png" class="card-img-top" alt="Diogo Reis">
+                            <div class="card-body">
+                                <h5 class="card-title">Diogo Reis</h5>
+                                <p class="card-text">Destaque no cenário competitivo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 mb-3">
+                        <div class="card h-100">
+                            <img src="./img/Rafael Mendes.png" class="card-img-top" alt="Rafael Mendes">
+                            <div class="card-body">
+                                <h5 class="card-title">Rafael Mendes</h5>
+                                <p class="card-text">Lenda do Jiu-Jitsu mundial.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+
+        <!-- COLUNA DIREITA -->
+        <div class="col-md-4">
+
+            <section class="bg-light p-3 rounded">
+                <h2>Receba Novidades</h2>
+                <p>Cadastre-se para receber novidades do Mundo JJ</p>
+
+                <form>
+                    <div class="mb-2">
+                        <input type="text" class="form-control" placeholder="Nome">
+                    </div>
+
+                    <div class="mb-2">
+                        <input type="email" class="form-control" placeholder="Email">
+                    </div>
+
+                    <button class="btn btn-dark w-100">Cadastrar</button>
+                </form>
+            </section>
+
+        </div>
 
     </div>
 
 </main>
 
-<footer class="footer">
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
     <p>© 2026 Mundo JJ</p>
-    <p>Instagram: @MundoJJ | YouTube: MundoJJ  | Contato: (31)99999-9999</p>
+    <p>Instagram: @MundoJJ | YouTube: MundoJJ | Contato: (31)99999-9999</p>
 </footer>
+
+<!-- JS Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
