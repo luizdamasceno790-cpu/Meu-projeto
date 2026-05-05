@@ -1,83 +1,201 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ============================================================
+   STYLES.CSS - Estilos personalizados do Mundo JJ
+   ============================================================ */
+
+
+/* ------------------------------------------------------------
+   GERAL
+   ------------------------------------------------------------ */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #212529;
 }
 
-/* LOGO */
-.logo {
-    height: 80px;
+img {
+    max-width: 100%;
+    height: auto;
 }
 
-/* HEADER */
-.header {
-    background-color: #222;
-    color: white;
-    padding: 20px;
+
+/* ------------------------------------------------------------
+   HEADER
+   ------------------------------------------------------------ */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.header i {
-    font-size: 24px;
-    cursor: pointer;
-    color: white;
-    transition: 0.3s;
+@media (max-width: 576px) {
+    header .container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    header form {
+        width: 100%;
+    }
 }
 
-.header i:hover {
-    color: #aaa;
+
+/* ------------------------------------------------------------
+   MENU DE NAVEGAÇÃO
+   ------------------------------------------------------------ */
+.navbar .nav-link {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
 }
 
-/* BANNER */
-.banner img {
-    width: 100%;
-    height: 400px;
+.navbar .nav-link:hover {
+    color: #dc3545 !important;
+}
+
+
+/* ------------------------------------------------------------
+   CARROSSEL DE DESTAQUES
+   ------------------------------------------------------------ */
+.carousel img {
+    max-height: 400px;
     object-fit: cover;
+    border-radius: 8px;
 }
 
-/* INTRO */
-.intro {
-    margin-bottom: 20px;
+@media (max-width: 768px) {
+    .carousel img {
+        max-height: 220px;
+    }
+
+    .carousel-caption {
+        display: none !important;
+    }
 }
 
-/* CADASTRO */
-.cadastro {
-    background: #f5f5f5;
-    padding: 20px;
-    border-radius: 10px;
-}
 
-/* FORM */
-.form-cadastro input {
-    margin-bottom: 10px;
-}
-
-/* SEÇÕES */
-.tecnicas, .atletas {
-    margin-bottom: 30px;
-}
-
-/* 🔥 AJUSTE PRINCIPAL DOS CARDS */
+/* ------------------------------------------------------------
+   CARDS DE TÉCNICAS
+   ------------------------------------------------------------ */
 .card {
-    height: 100%;
-    border-radius: 10px;
-    transition: 0.3s;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .card:hover {
-    transform: scale(1.03);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* 🔥 CORREÇÃO DAS IMAGENS (IMPORTANTE) */
-.card-img-top {
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.card-text {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+@media (max-width: 576px) {
+    .card-title {
+        font-size: 0.9rem;
+    }
+
+    .card-text {
+        font-size: 0.8rem;
+    }
+}
+
+
+/* ------------------------------------------------------------
+   PÁGINA DE DETALHE
+   ------------------------------------------------------------ */
+#detalhe-tecnica img {
     width: 100%;
-    height: 150px;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 300px;
+}
+
+@media (max-width: 768px) {
+    #detalhe-tecnica .row {
+        flex-direction: column;
+    }
+
+    #detalhe-tecnica img {
+        max-height: 220px;
+        margin-bottom: 16px;
+    }
+}
+
+
+/* ------------------------------------------------------------
+   GALERIA DE FOTOS
+   ------------------------------------------------------------ */
+#galeria-fotos .card-img-top {
+    height: 160px;
     object-fit: cover;
 }
 
-/* FOOTER */
+@media (max-width: 576px) {
+    #galeria-fotos .card-img-top {
+        height: 120px;
+    }
+}
+
+
+/* ------------------------------------------------------------
+   SEÇÃO DO ALUNO
+   ------------------------------------------------------------ */
+section hr {
+    border-color: #dc3545;
+    opacity: 0.4;
+}
+
+section a:hover .fa-instagram {
+    color: #e1306c !important;
+}
+
+section a:hover .fa-github {
+    color: #333 !important;
+}
+
+
+/* ------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------ */
 footer {
-    background-color: #222;
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin-bottom: 4px;
+}
+
+
+/* ------------------------------------------------------------
+   BOTÃO VOLTAR
+   ------------------------------------------------------------ */
+.btn-outline-dark:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
     color: white;
-    text-align: center;
-    padding: 15px;
+}
+
+
+/* ------------------------------------------------------------
+   TÍTULOS DAS SEÇÕES
+   ------------------------------------------------------------ */
+main h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    border-left: 4px solid #dc3545;
+    padding-left: 10px;
+}
+
+@media (max-width: 576px) {
+    main h2 {
+        font-size: 1.2rem;
+    }
 }

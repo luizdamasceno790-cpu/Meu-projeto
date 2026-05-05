@@ -13,11 +13,11 @@ const dados = {
       "dificuldade": "Intermediário",
       "destaque": true,
       "data": "2025-01-10",
-      "imagem_principal": "assets/img/armlock.png",
+      "imagem_principal": "img/armlock.png",
       "fotos": [
-        { "id": 1, "titulo": "Arm Lock pela guarda",    "imagem": "assets/img/armlock.png" },
-        { "id": 2, "titulo": "Arm Lock pela montada",   "imagem": "assets/img/armlock.png" },
-        { "id": 3, "titulo": "Finalização do Arm Lock", "imagem": "assets/img/armlock.png" }
+        { "id": 1, "titulo": "Arm Lock pela guarda",    "imagem": "img/armlock.png" },
+        { "id": 2, "titulo": "Arm Lock pela montada",   "imagem": "img/armlock.png" },
+        { "id": 3, "titulo": "Finalização do Arm Lock", "imagem": "img/armlock.png" }
       ]
     },
     {
@@ -29,11 +29,11 @@ const dados = {
       "dificuldade": "Avançado",
       "destaque": true,
       "data": "2025-01-15",
-      "imagem_principal": "assets/img/Arco e Flecha.png",
+      "imagem_principal": "img/Arco e Flecha.png",
       "fotos": [
-        { "id": 1, "titulo": "Pegada da lapela",             "imagem": "assets/img/Arco e Flecha.png" },
-        { "id": 2, "titulo": "Posicionamento das pernas",    "imagem": "assets/img/Arco e Flecha.png" },
-        { "id": 3, "titulo": "Finalização do Arco e Flecha", "imagem": "assets/img/Arco e Flecha.png" }
+        { "id": 1, "titulo": "Pegada da lapela",             "imagem": "img/Arco e Flecha.png" },
+        { "id": 2, "titulo": "Posicionamento das pernas",    "imagem": "img/Arco e Flecha.png" },
+        { "id": 3, "titulo": "Finalização do Arco e Flecha", "imagem": "img/Arco e Flecha.png" }
       ]
     },
     {
@@ -45,11 +45,11 @@ const dados = {
       "dificuldade": "Iniciante",
       "destaque": false,
       "data": "2025-01-20",
-      "imagem_principal": "assets/img/Kimura.png",
+      "imagem_principal": "img/Kimura.png",
       "fotos": [
-        { "id": 1, "titulo": "Pegada do Kimura",    "imagem": "assets/img/Kimura.png" },
-        { "id": 2, "titulo": "Kimura pela guarda",  "imagem": "assets/img/Kimura.png" },
-        { "id": 3, "titulo": "Aplicação do Kimura", "imagem": "assets/img/Kimura.png" }
+        { "id": 1, "titulo": "Pegada do Kimura",    "imagem": "img/Kimura.png" },
+        { "id": 2, "titulo": "Kimura pela guarda",  "imagem": "img/Kimura.png" },
+        { "id": 3, "titulo": "Aplicação do Kimura", "imagem": "img/Kimura.png" }
       ]
     },
     {
@@ -61,11 +61,11 @@ const dados = {
       "dificuldade": "Iniciante",
       "destaque": true,
       "data": "2025-01-25",
-      "imagem_principal": "assets/img/Mata leão.png",
+      "imagem_principal": "img/Mata leão.png",
       "fotos": [
-        { "id": 1, "titulo": "Tomada das costas",        "imagem": "assets/img/Mata leão.png" },
-        { "id": 2, "titulo": "Encaixe do Mata Leão",     "imagem": "assets/img/Mata leão.png" },
-        { "id": 3, "titulo": "Finalização do Mata Leão", "imagem": "assets/img/Mata leão.png" }
+        { "id": 1, "titulo": "Tomada das costas",        "imagem": "img/Mata leão.png" },
+        { "id": 2, "titulo": "Encaixe do Mata Leão",     "imagem": "img/Mata leão.png" },
+        { "id": 3, "titulo": "Finalização do Mata Leão", "imagem": "img/Mata leão.png" }
       ]
     },
     {
@@ -77,11 +77,11 @@ const dados = {
       "dificuldade": "Intermediário",
       "destaque": false,
       "data": "2025-02-01",
-      "imagem_principal": "assets/img/armlock.png",
+      "imagem_principal": "img/armlock.png",
       "fotos": [
-        { "id": 1, "titulo": "Abertura para o triângulo", "imagem": "assets/img/armlock.png" },
-        { "id": 2, "titulo": "Encaixe das pernas",        "imagem": "assets/img/armlock.png" },
-        { "id": 3, "titulo": "Finalização do Triângulo",  "imagem": "assets/img/armlock.png" }
+        { "id": 1, "titulo": "Abertura para o triângulo", "imagem": "img/armlock.png" },
+        { "id": 2, "titulo": "Encaixe das pernas",        "imagem": "img/armlock.png" },
+        { "id": 3, "titulo": "Finalização do Triângulo",  "imagem": "img/armlock.png" }
       ]
     },
     {
@@ -93,11 +93,11 @@ const dados = {
       "dificuldade": "Avançado",
       "destaque": true,
       "data": "2025-02-10",
-      "imagem_principal": "assets/img/Kimura.png",
+      "imagem_principal": "img/Kimura.png",
       "fotos": [
-        { "id": 1, "titulo": "Setup do Omoplata", "imagem": "assets/img/Kimura.png" },
-        { "id": 2, "titulo": "Rotação do corpo",  "imagem": "assets/img/Kimura.png" },
-        { "id": 3, "titulo": "Pressão no ombro",  "imagem": "assets/img/Kimura.png" }
+        { "id": 1, "titulo": "Setup do Omoplata", "imagem": "img/Kimura.png" },
+        { "id": 2, "titulo": "Rotação do corpo",  "imagem": "img/Kimura.png" },
+        { "id": 3, "titulo": "Pressão no ombro",  "imagem": "img/Kimura.png" }
       ]
     },
     {
@@ -109,11 +109,11 @@ const dados = {
       "dificuldade": "Iniciante",
       "destaque": false,
       "data": "2025-02-15",
-      "imagem_principal": "assets/img/Arco e Flecha.png",
+      "imagem_principal": "img/Arco e Flecha.png",
       "fotos": [
-        { "id": 1, "titulo": "Posição inicial da tesoura", "imagem": "assets/img/Arco e Flecha.png" },
-        { "id": 2, "titulo": "Movimento de tesoura",       "imagem": "assets/img/Arco e Flecha.png" },
-        { "id": 3, "titulo": "Inversão de posição",        "imagem": "assets/img/Arco e Flecha.png" }
+        { "id": 1, "titulo": "Posição inicial da tesoura", "imagem": "img/Arco e Flecha.png" },
+        { "id": 2, "titulo": "Movimento de tesoura",       "imagem": "img/Arco e Flecha.png" },
+        { "id": 3, "titulo": "Inversão de posição",        "imagem": "img/Arco e Flecha.png" }
       ]
     },
     {
@@ -125,11 +125,11 @@ const dados = {
       "dificuldade": "Intermediário",
       "destaque": false,
       "data": "2025-02-20",
-      "imagem_principal": "assets/img/Mata leão.png",
+      "imagem_principal": "img/Mata leão.png",
       "fotos": [
-        { "id": 1, "titulo": "Encaixe da Guilhotina",     "imagem": "assets/img/Mata leão.png" },
-        { "id": 2, "titulo": "Guilhotina na guarda",      "imagem": "assets/img/Mata leão.png" },
-        { "id": 3, "titulo": "Finalização da Guilhotina", "imagem": "assets/img/Mata leão.png" }
+        { "id": 1, "titulo": "Encaixe da Guilhotina",     "imagem": "img/Mata leão.png" },
+        { "id": 2, "titulo": "Guilhotina na guarda",      "imagem": "img/Mata leão.png" },
+        { "id": 3, "titulo": "Finalização da Guilhotina", "imagem": "img/Mata leão.png" }
       ]
     }
   ]
@@ -230,32 +230,16 @@ function montarCards() {
 // ============================================================
 // FUNÇÃO: montarDetalhe()
 // ============================================================
-// Monta a página de detalhe de uma técnica específica
-//
-// Passo a passo:
-// 1. Lê o ?id= da URL usando URLSearchParams
-// 2. Busca a técnica no JSON pelo id
-// 3. Se não encontrar, exibe mensagem de erro
-// 4. Monta o HTML com as informações gerais (5+ campos)
-//    e injeta no div#detalhe-tecnica
-// 5. Monta a galeria de fotos e injeta no div#galeria-fotos
-// ============================================================
-
 function montarDetalhe() {
     const containerDetalhe = document.getElementById("detalhe-tecnica");
     const containerGaleria = document.getElementById("galeria-fotos");
     if (!containerDetalhe || !containerGaleria) return;
 
-    // Passo 1: lê o parâmetro "id" da URL
-    // Ex: detalhe.html?id=3 → params.get("id") retorna "3"
     const params = new URLSearchParams(window.location.search);
-    const id = parseInt(params.get("id")); // converte para número com parseInt()
+    const id = parseInt(params.get("id"));
 
-    // Passo 2: busca a técnica no array pelo id
-    // .find() retorna o primeiro item que satisfaz a condição, ou undefined
     const tecnica = dados.tecnicas.find(t => t.id === id);
 
-    // Passo 3: se não encontrou a técnica, exibe erro
     if (!tecnica) {
         containerDetalhe.innerHTML = `
             <div class="alert alert-danger">
@@ -265,58 +249,34 @@ function montarDetalhe() {
         return;
     }
 
-    // Passo 4: monta o HTML com as informações gerais da técnica
-    // São 7 informações distintas, atendendo o mínimo de 5 exigido
     containerDetalhe.innerHTML = `
         <div class="row">
-
-            <!-- Coluna da imagem principal -->
             <div class="col-md-4 mb-3">
                 <img src="${tecnica.imagem_principal}" 
                      alt="${tecnica.nome}" 
                      class="img-fluid rounded shadow">
             </div>
-
-            <!-- Coluna das informações -->
             <div class="col-md-8">
-
-                <!-- 1. Nome da técnica -->
                 <h3>${tecnica.nome}</h3>
-
-                <!-- 2. Descrição curta -->
                 <p class="lead">${tecnica.descricao}</p>
-
-                <!-- 3. Conteúdo detalhado -->
                 <p>${tecnica.conteudo}</p>
-
                 <hr>
-
-                <!-- 4. Categoria -->
                 <p><strong>Categoria:</strong> 
                     <span class="badge bg-secondary">${tecnica.categoria}</span>
                 </p>
-
-                <!-- 5. Dificuldade -->
                 <p><strong>Dificuldade:</strong> 
                     <span class="badge bg-dark">${tecnica.dificuldade}</span>
                 </p>
-
-                <!-- 6. Data de cadastro -->
                 <p><strong>Cadastrado em:</strong> ${tecnica.data}</p>
-
-                <!-- 7. Destaque -->
                 <p><strong>Técnica em destaque:</strong> 
                     ${tecnica.destaque ? 
                         '<span class="text-success">✔ Sim</span>' : 
                         '<span class="text-muted">Não</span>'}
                 </p>
-
             </div>
         </div>
     `;
 
-    // Passo 5: monta a galeria de fotos associadas
-    // percorre o array tecnica.fotos e cria um card para cada foto
     const fotos = tecnica.fotos.map(foto => {
         return `
             <div class="col-6 col-md-4 col-lg-3 mb-3">
@@ -338,10 +298,7 @@ function montarDetalhe() {
 
 
 // ============================================================
-// Chama as funções quando o arquivo é carregado
-// O if/else garante que cada função rode só na página certa:
-// - index.html  → montarCarrossel() e montarCards()
-// - detalhe.html → montarDetalhe()
+// Chama as funções na página correta
 // ============================================================
 if (document.getElementById("carrossel-destaques")) {
     montarCarrossel();

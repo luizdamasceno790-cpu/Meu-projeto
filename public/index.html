@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalhe da Técnica - Mundo JJ</title>
+    <title>Mundo JJ</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="styles.css">
 
     <!-- Font Awesome (ícones) -->
     <script src="https://kit.fontawesome.com/98e97fbcca.js" crossorigin="anonymous"></script>
@@ -17,34 +17,23 @@
 
 <body>
 
-<!-- ========================================================
-     HEADER - igual ao index.html
-     ======================================================== -->
+<!-- HEADER -->
 <header class="bg-dark text-white p-3">
     <div class="container d-flex justify-content-between align-items-center">
-
         <i class="fa-solid fa-bars"></i>
-
-        <!-- Logo clicável: volta para a home -->
-        <a href="index.html">
-            <img src="assets/img/Logo.png" alt="Logo Mundo JJ" style="height:70px;">
-        </a>
-
+        <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;">
         <form class="d-flex gap-2">
             <input class="form-control" type="text" placeholder="Buscar técnicas...">
             <button class="btn btn-light">Buscar</button>
         </form>
-
     </div>
 </header>
 
-<!-- ========================================================
-     MENU DE NAVEGAÇÃO
-     ======================================================== -->
+<!-- MENU -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <ul class="navbar-nav mx-auto gap-3">
-            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Técnicas</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Campeonatos</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Atletas</a></li>
@@ -52,54 +41,61 @@
     </div>
 </nav>
 
-<!-- ========================================================
-     MAIN - Conteúdo principal
-     ======================================================== -->
+<!-- MAIN -->
 <main class="container my-4">
 
-    <!-- Botão voltar -->
-    <a href="index.html" class="btn btn-outline-dark mb-4">
-        <i class="fa-solid fa-arrow-left"></i> Voltar
-    </a>
-
-    <!-- ----------------------------------------------------
-         SEÇÃO 1 - INFORMAÇÕES GERAIS DA TÉCNICA
-         Esse div começa vazio. O JavaScript vai:
-         1. Ler o ?id= da URL
-         2. Encontrar a técnica correspondente no JSON
-         3. Montar o HTML com pelo menos 5 informações e
-            injetar aqui dentro
-         ---------------------------------------------------- -->
+    <!-- SEÇÃO 1 - CARROSSEL DE DESTAQUES -->
     <section class="mb-5">
-        <h2 class="mb-3">Informações Gerais</h2>
-        <hr>
-
-        <!-- O id="detalhe-tecnica" é o alvo do JavaScript -->
-        <div id="detalhe-tecnica">
-            <!-- Conteúdo montado dinamicamente pelo app.js -->
+        <h2 class="mb-3">Técnicas em Destaque</h2>
+        <div id="carrossel-destaques">
+            <!-- Montado dinamicamente pelo app.js -->
         </div>
     </section>
 
-    <!-- ----------------------------------------------------
-         SEÇÃO 2 - FOTOS ASSOCIADAS (GALERIA)
-         Também montada dinamicamente pelo JavaScript.
-         Vai exibir as fotos do array "fotos" da técnica.
-         ---------------------------------------------------- -->
+    <!-- SEÇÃO 2 - TODOS OS CARDS -->
     <section class="mb-5">
-        <h2 class="mb-3">Fotos da Técnica</h2>
-        <hr>
+        <h2 class="mb-3">Todas as Técnicas</h2>
+        <div id="lista-tecnicas" class="row">
+            <!-- Montado dinamicamente pelo app.js -->
+        </div>
+    </section>
 
-        <!-- O id="galeria-fotos" é o alvo do JavaScript -->
-        <div id="galeria-fotos" class="row">
-            <!-- Conteúdo montado dinamicamente pelo app.js -->
+    <!-- SEÇÃO 3 - INFORMAÇÕES DO ALUNO -->
+    <section class="mb-5">
+        <h2 class="mb-3">Informações do Aluno</h2>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Sobre</h5>
+                <p>
+                    Site criado como projeto acadêmico para a disciplina de
+                    Desenvolvimento Web. O Mundo JJ tem como objetivo divulgar
+                    e ensinar técnicas do Jiu-Jitsu, esporte que une disciplina,
+                    respeito e superação.
+                </p>
+            </div>
+            <div class="col-md-6">
+                <h5>Autoria</h5>
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <i class="fa-solid fa-circle-user fa-2x"></i>
+                    <div>
+                        <p class="mb-0"><strong>Aluno:</strong> Luiz Felipe de Souza Damasceno</p>
+                        <p class="mb-0"><strong>Curso:</strong> Sistemas de Informação</p>
+                        <p class="mb-0"><strong>Turma:</strong> Noite</p>
+                    </div>
+                </div>
+                <div class="mt-2">
+                    <strong>Redes Sociais:</strong>
+                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-instagram fa-lg"></i></a>
+                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-github fa-lg"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 
 </main>
 
-<!-- ========================================================
-     FOOTER
-     ======================================================== -->
+<!-- FOOTER -->
 <footer class="bg-dark text-white text-center p-3">
     <p>© 2026 Mundo JJ</p>
     <p>Instagram: @MundoJJ | YouTube: MundoJJ | Contato: (31)99999-9999</p>
@@ -109,7 +105,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- app.js carregado por último -->
-<script src="assets/js/app.js"></script>
+<script src="app.js"></script>
 
 </body>
 </html>
