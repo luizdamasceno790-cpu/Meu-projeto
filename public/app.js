@@ -125,8 +125,23 @@ const dados = {
         },
 
         {
-            "id":
+            "id": 8,
+            "nome": "Guilhotina",
+            "descricao": "Estrangulamento frontal aplicado com o braço ao redor do pescoço",
+            "conteudo": "A Guilhotina é um estrangulamento frontal aplicado envolvendo o pescoço do adversário com um braço. Pode ser finalizada de diversas formas: com os pés no chão, dentro da guarda fechada ou com a guarda alta. É muito utilizada quando o adversário tenta uma queda de soco ou abaixa a cabeça descuidadamente. Existe também a variação Arm-in Guilhotina, ainda mais poderosa.",
+            "categoria": "Estrangulamento",
+            "dificuldade": "Intermediario",
+            "destaque": false,
+            "data": "17-09-2025",
+            "imagem_principal": "#",
+
+            "fotos": [
+                {"id": 1, "titulo": "Encaixe da Guilhotina", "imagem": "#"},
+                {"id": 2, "titulo": "Guilhotina na guarda", "imagem": "#"},
+                {"id": 3, "titulo": "Finalização da Guilhotina", "imagem": "#"}
+                
+            ]
         }
 
     ]
-}
+};
