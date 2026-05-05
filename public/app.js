@@ -145,3 +145,25 @@ const dados = {
 
     ]
 };
+
+ const destaques = dados.tecnicas.filter(tecnica => tecnica.destaque === true);
+ 
+    // Passo 3: monta o HTML de cada slide
+    // .map() transforma cada item do array em uma string HTML
+    // "index" é a posição do item (0, 1, 2...) — usado para marcar o primeiro como "active"
+    const slides = destaques.map((tecnica, index) => {
+        const classeAtiva = index === 0 ? "active" : "";
+        return `
+            <div class="carousel-item ${classeAtiva}">
+                <img src="${tecnica.imagem_principal}" 
+                     class="d-block w-100" 
+                     alt="${tecnica.nome}"
+                     style="max-height: 400px; object-fit: cover;">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-50 rounded p-2">
+                    <h5>${tecnica.nome}</h5>
+                    <p>${tecnica.descricao}</p>
+                    <a href="detalhe.html?id=${tecnica.id}" class="btn btn-light btn-sm">Ver detalhes</a>
+                </div>
+            </div>
+        `;
+    });
