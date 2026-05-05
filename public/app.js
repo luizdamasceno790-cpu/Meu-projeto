@@ -139,28 +139,12 @@ const dados = {
 // ============================================================
 // FUNÇÃO: montarCarrossel()
 // ============================================================
-// Monta o carrossel de destaques no index.html
-//
-// Passo a passo:
-// 1. Pega o div#carrossel-destaques do HTML
-// 2. Filtra as técnicas com destaque:true
-// 3. Monta o HTML de cada slide
-// 4. Monta os indicadores (bolinhas)
-// 5. Injeta tudo dentro do div
-// ============================================================
-
 function montarCarrossel() {
-
-    // Passo 1: pega o elemento alvo no HTML
     const container = document.getElementById("carrossel-destaques");
+    if (!container) return;
 
-    // Passo 2: filtra só as técnicas com destaque:true
-    // .filter() retorna um novo array só com os itens que atendem a condição
     const destaques = dados.tecnicas.filter(tecnica => tecnica.destaque === true);
 
-    // Passo 3: monta o HTML de cada slide
-    // .map() transforma cada item do array em uma string HTML
-    // "index" é a posição do item (0, 1, 2...) — usado para marcar o primeiro como "active"
     const slides = destaques.map((tecnica, index) => {
         const classeAtiva = index === 0 ? "active" : "";
         return `
@@ -178,8 +162,6 @@ function montarCarrossel() {
         `;
     });
 
-    // Passo 4: monta os indicadores (bolinhas de navegação)
-    // um botão para cada slide em destaque
     const indicadores = destaques.map((_, index) => {
         const classeAtiva = index === 0 ? "active" : "";
         return `
@@ -191,33 +173,179 @@ function montarCarrossel() {
         `;
     });
 
-    // Passo 5: injeta o HTML completo do carrossel no container
-    // .join("") une o array de strings em uma única string
     container.innerHTML = `
         <div id="carrossel" class="carousel slide" data-bs-ride="carousel">
-
             <div class="carousel-indicators">
                 ${indicadores.join("")}
             </div>
-
             <div class="carousel-inner">
                 ${slides.join("")}
             </div>
-
             <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </button>
-
             <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </button>
-
         </div>
     `;
 }
 
 
 // ============================================================
-// Chama a função quando o arquivo é carregado
+// FUNÇÃO: montarCards()
 // ============================================================
-montarCarrossel();
+function montarCards() {
+    const container = document.getElementById("lista-tecnicas");
+    if (!container) return;
+
+    const cards = dados.tecnicas.map(tecnica => {
+        return `
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="${tecnica.imagem_principal}" 
+                         class="card-img-top" 
+                         alt="${tecnica.nome}"
+                         style="height: 180px; object-fit: cover;">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">${tecnica.nome}</h5>
+                        <p class="card-text flex-grow-1">${tecnica.descricao}</p>
+                        <div class="mb-2">
+                            <span class="badge bg-secondary me-1">${tecnica.categoria}</span>
+                            <span class="badge bg-dark">${tecnica.dificuldade}</span>
+                        </div>
+                        <a href="detalhe.html?id=${tecnica.id}" class="btn btn-danger btn-sm mt-auto">
+                            Ver técnica
+                        </a>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = cards.join("");
+}
+
+
+// ============================================================
+// FUNÇÃO: montarDetalhe()
+// ============================================================
+// Monta a página de detalhe de uma técnica específica
+//
+// Passo a passo:
+// 1. Lê o ?id= da URL usando URLSearchParams
+// 2. Busca a técnica no JSON pelo id
+// 3. Se não encontrar, exibe mensagem de erro
+// 4. Monta o HTML com as informações gerais (5+ campos)
+//    e injeta no div#detalhe-tecnica
+// 5. Monta a galeria de fotos e injeta no div#galeria-fotos
+// ============================================================
+
+function montarDetalhe() {
+    const containerDetalhe = document.getElementById("detalhe-tecnica");
+    const containerGaleria = document.getElementById("galeria-fotos");
+    if (!containerDetalhe || !containerGaleria) return;
+
+    // Passo 1: lê o parâmetro "id" da URL
+    // Ex: detalhe.html?id=3 → params.get("id") retorna "3"
+    const params = new URLSearchParams(window.location.search);
+    const id = parseInt(params.get("id")); // converte para número com parseInt()
+
+    // Passo 2: busca a técnica no array pelo id
+    // .find() retorna o primeiro item que satisfaz a condição, ou undefined
+    const tecnica = dados.tecnicas.find(t => t.id === id);
+
+    // Passo 3: se não encontrou a técnica, exibe erro
+    if (!tecnica) {
+        containerDetalhe.innerHTML = `
+            <div class="alert alert-danger">
+                Técnica não encontrada. <a href="index.html">Voltar para a home</a>
+            </div>
+        `;
+        return;
+    }
+
+    // Passo 4: monta o HTML com as informações gerais da técnica
+    // São 7 informações distintas, atendendo o mínimo de 5 exigido
+    containerDetalhe.innerHTML = `
+        <div class="row">
+
+            <!-- Coluna da imagem principal -->
+            <div class="col-md-4 mb-3">
+                <img src="${tecnica.imagem_principal}" 
+                     alt="${tecnica.nome}" 
+                     class="img-fluid rounded shadow">
+            </div>
+
+            <!-- Coluna das informações -->
+            <div class="col-md-8">
+
+                <!-- 1. Nome da técnica -->
+                <h3>${tecnica.nome}</h3>
+
+                <!-- 2. Descrição curta -->
+                <p class="lead">${tecnica.descricao}</p>
+
+                <!-- 3. Conteúdo detalhado -->
+                <p>${tecnica.conteudo}</p>
+
+                <hr>
+
+                <!-- 4. Categoria -->
+                <p><strong>Categoria:</strong> 
+                    <span class="badge bg-secondary">${tecnica.categoria}</span>
+                </p>
+
+                <!-- 5. Dificuldade -->
+                <p><strong>Dificuldade:</strong> 
+                    <span class="badge bg-dark">${tecnica.dificuldade}</span>
+                </p>
+
+                <!-- 6. Data de cadastro -->
+                <p><strong>Cadastrado em:</strong> ${tecnica.data}</p>
+
+                <!-- 7. Destaque -->
+                <p><strong>Técnica em destaque:</strong> 
+                    ${tecnica.destaque ? 
+                        '<span class="text-success">✔ Sim</span>' : 
+                        '<span class="text-muted">Não</span>'}
+                </p>
+
+            </div>
+        </div>
+    `;
+
+    // Passo 5: monta a galeria de fotos associadas
+    // percorre o array tecnica.fotos e cria um card para cada foto
+    const fotos = tecnica.fotos.map(foto => {
+        return `
+            <div class="col-6 col-md-4 col-lg-3 mb-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="${foto.imagem}" 
+                         class="card-img-top" 
+                         alt="${foto.titulo}"
+                         style="height: 160px; object-fit: cover;">
+                    <div class="card-body">
+                        <p class="card-text text-center">${foto.titulo}</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    containerGaleria.innerHTML = fotos.join("");
+}
+
+
+// ============================================================
+// Chama as funções quando o arquivo é carregado
+// O if/else garante que cada função rode só na página certa:
+// - index.html  → montarCarrossel() e montarCards()
+// - detalhe.html → montarDetalhe()
+// ============================================================
+if (document.getElementById("carrossel-destaques")) {
+    montarCarrossel();
+    montarCards();
+} else {
+    montarDetalhe();
+}

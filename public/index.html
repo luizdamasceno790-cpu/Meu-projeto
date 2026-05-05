@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo JJ</title>
+    <title>Detalhe da Técnica - Mundo JJ</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -18,14 +18,17 @@
 <body>
 
 <!-- ========================================================
-     HEADER - Cabeçalho com logo
+     HEADER - igual ao index.html
      ======================================================== -->
 <header class="bg-dark text-white p-3">
     <div class="container d-flex justify-content-between align-items-center">
 
         <i class="fa-solid fa-bars"></i>
 
-        <img src="assets/img/Logo.png" alt="Logo Mundo JJ" style="height:70px;">
+        <!-- Logo clicável: volta para a home -->
+        <a href="index.html">
+            <img src="assets/img/Logo.png" alt="Logo Mundo JJ" style="height:70px;">
+        </a>
 
         <form class="d-flex gap-2">
             <input class="form-control" type="text" placeholder="Buscar técnicas...">
@@ -41,7 +44,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <ul class="navbar-nav mx-auto gap-3">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Técnicas</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Campeonatos</a></li>
             <li class="nav-item"><a class="nav-link" href="#">Atletas</a></li>
@@ -54,81 +57,41 @@
      ======================================================== -->
 <main class="container my-4">
 
-    <!-- ----------------------------------------------------
-         SEÇÃO 1 - CARROSSEL DE DESTAQUES
-         Esse div começa vazio. O JavaScript vai ler todas as
-         técnicas com destaque:true no JSON e montar o HTML
-         do carrossel aqui dentro automaticamente.
-         ---------------------------------------------------- -->
-    <section class="mb-5">
-        <h2 class="mb-3">Técnicas em Destaque</h2>
-
-        <!-- O id="carrossel-destaques" é o alvo do JavaScript.
-             O JS vai encontrar esse elemento pelo id e
-             injetar o carrossel do Bootstrap com as técnicas. -->
-        <div id="carrossel-destaques">
-            <!-- Conteúdo montado dinamicamente pelo app.js -->
-        </div>
-    </section>
+    <!-- Botão voltar -->
+    <a href="index.html" class="btn btn-outline-dark mb-4">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
 
     <!-- ----------------------------------------------------
-         SEÇÃO 2 - TODOS OS ITENS (CARDS)
-         Mesmo conceito: div vazia que o JavaScript vai preencher
-         com um card para cada técnica cadastrada no JSON.
-         Ao clicar no card, o usuário vai para detalhe.html?id=X
+         SEÇÃO 1 - INFORMAÇÕES GERAIS DA TÉCNICA
+         Esse div começa vazio. O JavaScript vai:
+         1. Ler o ?id= da URL
+         2. Encontrar a técnica correspondente no JSON
+         3. Montar o HTML com pelo menos 5 informações e
+            injetar aqui dentro
          ---------------------------------------------------- -->
     <section class="mb-5">
-        <h2 class="mb-3">Todas as Técnicas</h2>
-
-        <!-- O id="lista-tecnicas" é o alvo do JavaScript.
-             O JS vai criar um card Bootstrap para cada técnica
-             do array dados.tecnicas e inserir aqui. -->
-        <div id="lista-tecnicas" class="row">
-            <!-- Conteúdo montado dinamicamente pelo app.js -->
-        </div>
-    </section>
-
-    <!-- ----------------------------------------------------
-         SEÇÃO 3 - INFORMAÇÕES DO ALUNO
-         Obrigatória pelo wireframe. Apresenta os dados do
-         responsável pelo site (nome, curso, turma, redes sociais)
-         ---------------------------------------------------- -->
-    <section class="mb-5">
-        <h2 class="mb-3">Informações do Aluno</h2>
+        <h2 class="mb-3">Informações Gerais</h2>
         <hr>
 
-        <div class="row">
+        <!-- O id="detalhe-tecnica" é o alvo do JavaScript -->
+        <div id="detalhe-tecnica">
+            <!-- Conteúdo montado dinamicamente pelo app.js -->
+        </div>
+    </section>
 
-            <!-- Coluna Sobre -->
-            <div class="col-md-6">
-                <h5>Sobre</h5>
-                <p>
-                    Site criado como projeto acadêmico para a disciplina de
-                    Desenvolvimento Web. O Mundo JJ tem como objetivo divulgar
-                    e ensinar técnicas do Jiu-Jitsu, esporte que une disciplina,
-                    respeito e superação.
-                </p>
-            </div>
+    <!-- ----------------------------------------------------
+         SEÇÃO 2 - FOTOS ASSOCIADAS (GALERIA)
+         Também montada dinamicamente pelo JavaScript.
+         Vai exibir as fotos do array "fotos" da técnica.
+         ---------------------------------------------------- -->
+    <section class="mb-5">
+        <h2 class="mb-3">Fotos da Técnica</h2>
+        <hr>
 
-            <!-- Coluna Autoria -->
-            <div class="col-md-6">
-                <h5>Autoria</h5>
-                <div class="d-flex align-items-center gap-2 mb-2">
-                    <i class="fa-solid fa-user-circle fa-2x"></i>
-                    <div>
-                        <p class="mb-0"><strong>Aluno:</strong> Luiz Felipe de Souza Damasceno</p>
-                        <p class="mb-0"><strong>Curso:</strong> Sistemas de Informação</p>
-                        <p class="mb-0"><strong>Turma:</strong> Noite</p>
-                    </div>
-                </div>
-
-                <div class="mt-2">
-                    <strong>Redes Sociais:</strong>
-                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-instagram fa-lg"></i></a>
-                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-github fa-lg"></i></a>
-                </div>
-            </div>
-
+        <!-- O id="galeria-fotos" é o alvo do JavaScript -->
+        <div id="galeria-fotos" class="row">
+            <!-- Conteúdo montado dinamicamente pelo app.js -->
         </div>
     </section>
 
@@ -145,8 +108,7 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- app.js — carregado por último para garantir que o HTML já existe
-     quando o JavaScript tentar encontrar os elementos pelo id -->
+<!-- app.js carregado por último -->
 <script src="assets/js/app.js"></script>
 
 </body>
