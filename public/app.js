@@ -12,11 +12,11 @@ const dados = {
       "categoria": "Finalização",
       "dificuldade": "Intermediário",
       "destaque": true,
-      "data": "2025-01-10",
+      "data": "10-01-2025",
       "imagem_principal": "img/armlock.png",
       "fotos": [
-        { "id": 1, "titulo": "Arm Lock pela guarda",    "imagem": "img/armlock.png" },
-        { "id": 2, "titulo": "Arm Lock pela montada",   "imagem": "img/armlock.png" },
+        { "id": 1, "titulo": "Arm Lock pela guarda",    "imagem": "img/armLockGuarda.png" },
+        { "id": 2, "titulo": "Arm Lock pela montada",   "imagem": "img/armlockMontada.png" },
         { "id": 3, "titulo": "Finalização do Arm Lock", "imagem": "img/armlock.png" }
       ]
     },
@@ -28,12 +28,12 @@ const dados = {
       "categoria": "Estrangulamento",
       "dificuldade": "Avançado",
       "destaque": true,
-      "data": "2025-01-15",
-      "imagem_principal": "img/Arco e Flecha.png",
+      "data": "15-01-2026",
+      "imagem_principal": "img/arco-e-flecha.png",
       "fotos": [
-        { "id": 1, "titulo": "Pegada da lapela",             "imagem": "img/Arco e Flecha.png" },
-        { "id": 2, "titulo": "Posicionamento das pernas",    "imagem": "img/Arco e Flecha.png" },
-        { "id": 3, "titulo": "Finalização do Arco e Flecha", "imagem": "img/Arco e Flecha.png" }
+        { "id": 1, "titulo": "Pegada da lapela",             "imagem": "img/arco-e-flecha-PegadaLapela.png" },
+        { "id": 2, "titulo": "Posicionamento das pernas",    "imagem": "img/arco-e-flecha-Pernas.png" },
+        { "id": 3, "titulo": "Finalização do Arco e Flecha", "imagem": "img/arco-e-flecha.png" }
       ]
     },
     {
@@ -44,12 +44,12 @@ const dados = {
       "categoria": "Finalização",
       "dificuldade": "Iniciante",
       "destaque": false,
-      "data": "2025-01-20",
+      "data": "22-03-2026",
       "imagem_principal": "img/Kimura.png",
       "fotos": [
-        { "id": 1, "titulo": "Pegada do Kimura",    "imagem": "img/Kimura.png" },
-        { "id": 2, "titulo": "Kimura pela guarda",  "imagem": "img/Kimura.png" },
-        { "id": 3, "titulo": "Aplicação do Kimura", "imagem": "img/Kimura.png" }
+        { "id": 1, "titulo": "Pegada do Kimura",    "imagem": "img/Kimura-Pegada.png" },
+        { "id": 2, "titulo": "Kimura pela guarda",  "imagem": "img/Kimura-Guarda.png" },
+        { "id": 3, "titulo": "Aplicação do Kimura", "imagem": "img/Kimura-F.png" }
       ]
     },
     {
@@ -60,12 +60,12 @@ const dados = {
       "categoria": "Estrangulamento",
       "dificuldade": "Iniciante",
       "destaque": true,
-      "data": "2025-01-25",
-      "imagem_principal": "img/Mata leão.png",
+      "data": "16-02-2026",
+      "imagem_principal": "img/mata-leao.png",
       "fotos": [
-        { "id": 1, "titulo": "Tomada das costas",        "imagem": "img/Mata leão.png" },
-        { "id": 2, "titulo": "Encaixe do Mata Leão",     "imagem": "img/Mata leão.png" },
-        { "id": 3, "titulo": "Finalização do Mata Leão", "imagem": "img/Mata leão.png" }
+        { "id": 1, "titulo": "Tomada das costas",        "imagem": "img/mata-leao-P.png" },
+        { "id": 2, "titulo": "Encaixe do Mata Leão",     "imagem": "img/mata-leao-A.png" },
+        { "id": 3, "titulo": "Finalização do Mata Leão", "imagem": "img/mata-leao-F.png" }
       ]
     },
     {
@@ -76,12 +76,12 @@ const dados = {
       "categoria": "Estrangulamento",
       "dificuldade": "Intermediário",
       "destaque": false,
-      "data": "2025-02-01",
-      "imagem_principal": "img/armlock.png",
+      "data": "03-05-2026",
+      "imagem_principal": "img/triangulo.png",
       "fotos": [
-        { "id": 1, "titulo": "Abertura para o triângulo", "imagem": "img/armlock.png" },
-        { "id": 2, "titulo": "Encaixe das pernas",        "imagem": "img/armlock.png" },
-        { "id": 3, "titulo": "Finalização do Triângulo",  "imagem": "img/armlock.png" }
+        { "id": 1, "titulo": "Abertura para o triângulo", "imagem": "img/triangulo-A.png" },
+        { "id": 2, "titulo": "Encaixe das pernas",        "imagem": "img/triangulo-P.png" },
+        { "id": 3, "titulo": "Finalização do Triângulo",  "imagem": "img/triangulo-F.png" }
       ]
     },
     {
@@ -92,12 +92,12 @@ const dados = {
       "categoria": "Finalização",
       "dificuldade": "Avançado",
       "destaque": true,
-      "data": "2025-02-10",
-      "imagem_principal": "img/Kimura.png",
+      "data": "07-04-2026",
+      "imagem_principal": "img/omoplata.png",
       "fotos": [
-        { "id": 1, "titulo": "Setup do Omoplata", "imagem": "img/Kimura.png" },
-        { "id": 2, "titulo": "Rotação do corpo",  "imagem": "img/Kimura.png" },
-        { "id": 3, "titulo": "Pressão no ombro",  "imagem": "img/Kimura.png" }
+        { "id": 1, "titulo": "Setup do Omoplata", "imagem": "img/omoplata-S.png" },
+        { "id": 2, "titulo": "Rotação do corpo",  "imagem": "img/omoplata-R.png" },
+        { "id": 3, "titulo": "Pressão no ombro",  "imagem": "img/omoplata-P.png" }
       ]
     },
     {
@@ -108,12 +108,12 @@ const dados = {
       "categoria": "Raspagem",
       "dificuldade": "Iniciante",
       "destaque": false,
-      "data": "2025-02-15",
-      "imagem_principal": "img/Arco e Flecha.png",
+      "data": "15-03-2026",
+      "imagem_principal": "img/tesourinha.png",
       "fotos": [
-        { "id": 1, "titulo": "Posição inicial da tesoura", "imagem": "img/Arco e Flecha.png" },
-        { "id": 2, "titulo": "Movimento de tesoura",       "imagem": "img/Arco e Flecha.png" },
-        { "id": 3, "titulo": "Inversão de posição",        "imagem": "img/Arco e Flecha.png" }
+        { "id": 1, "titulo": "Posição inicial da tesoura", "imagem": "img/tesourinha-P.png" },
+        { "id": 2, "titulo": "Movimento de tesoura",       "imagem": "img/tesourinha-R.png" },
+        { "id": 3, "titulo": "Inversão de posição",        "imagem": "img/tesourinha-M.png" }
       ]
     },
     {
@@ -124,12 +124,12 @@ const dados = {
       "categoria": "Estrangulamento",
       "dificuldade": "Intermediário",
       "destaque": false,
-      "data": "2025-02-20",
-      "imagem_principal": "img/Mata leão.png",
+      "data": "20-02-2026",
+      "imagem_principal": "img/guilhotina.png",
       "fotos": [
-        { "id": 1, "titulo": "Encaixe da Guilhotina",     "imagem": "img/Mata leão.png" },
-        { "id": 2, "titulo": "Guilhotina na guarda",      "imagem": "img/Mata leão.png" },
-        { "id": 3, "titulo": "Finalização da Guilhotina", "imagem": "img/Mata leão.png" }
+        { "id": 1, "titulo": "Encaixe da Guilhotina",     "imagem": "img/guilhotina-E.png" },
+        { "id": 2, "titulo": "Guilhotina na guarda",      "imagem": "img/guilhotina-G.png" },
+        { "id": 3, "titulo": "Finalização da Guilhotina", "imagem": "img/guilhotina-F.png" }
       ]
     }
   ]
