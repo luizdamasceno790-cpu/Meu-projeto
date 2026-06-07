@@ -18,6 +18,8 @@ O projeto foi desenvolvido com HTML, CSS, Bootstrap e JavaScript puro, sem uso d
 ![Foto 3 HomePage](./img/fotoHomePage3.png)
 ![Foto 1 Detalhes](./img/fotoDetalhes1.png)
 ![Foto 2 Detalhes](./img/fotoDetalhes2.png)
+![Print 1 DashBoard](./img/printdashboard.png)
+![Print 2 DashBoard](./img/printdashboard1.png)
 
 🗂️ Estrutura do Projeto
 /public

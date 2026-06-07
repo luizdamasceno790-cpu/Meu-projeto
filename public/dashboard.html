@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Mundo JJ</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/98e97fbcca.js" crossorigin="anonymous"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <style>
+        /* ── Tokens de cor do Mundo JJ ── */
+        :root {
+            --jj-red:    #dc3545;
+            --jj-dark:   #212529;
+            --jj-gray:   #f8f9fa;
+            --jj-muted:  #6c757d;
+        }
+
+        body {
+            background-color: var(--jj-gray);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--jj-dark);
+        }
+
+        /* ── Cabeçalho de seção ── */
+        main h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            border-left: 4px solid var(--jj-red);
+            padding-left: 10px;
+        }
+
+        /* ── Cards de KPI ── */
+        .kpi-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: transform .2s, box-shadow .2s;
+        }
+        .kpi-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,.12);
+        }
+        .kpi-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: var(--jj-red);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+        .kpi-value {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+            color: var(--jj-dark);
+        }
+        .kpi-label {
+            font-size: .8rem;
+            color: var(--jj-muted);
+            margin-top: 2px;
+        }
+
+        /* ── Cards de gráfico ── */
+        .chart-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+            height: 100%;
+        }
+        .chart-card h5 {
+            font-weight: 700;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+        .chart-card .chart-subtitle {
+            font-size: .8rem;
+            color: var(--jj-muted);
+            margin-bottom: 20px;
+        }
+
+        /* ── Tabela de resumo ── */
+        .table-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 12px rgba(0,0,0,.08);
+        }
+        .badge-cat {
+            font-size: .72rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .badge-Finalização    { background: #dc3545; color: #fff; }
+        .badge-Estrangulamento{ background: #343a40; color: #fff; }
+        .badge-Raspagem       { background: #6c757d; color: #fff; }
+
+        .badge-dif {
+            font-size: .72rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+        }
+        .badge-Iniciante     { background: #198754; color: #fff; }
+        .badge-Intermediário { background: #fd7e14; color: #fff; }
+        .badge-Avançado      { background: #dc3545; color: #fff; }
+
+        /* ── Animação de entrada ── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .fade-up {
+            animation: fadeUp .5s ease both;
+        }
+        .fade-up:nth-child(1){ animation-delay: .05s; }
+        .fade-up:nth-child(2){ animation-delay: .15s; }
+        .fade-up:nth-child(3){ animation-delay: .25s; }
+        .fade-up:nth-child(4){ animation-delay: .35s; }
+
+        /* ── Nav link hover ── */
+        .navbar .nav-link:hover { color: #dc3545 !important; }
+
+        /* ── Botão voltar hover ── */
+        .btn-outline-dark:hover {
+            background-color: #dc3545;
+            border-color: #dc3545;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center">
+        <i class="fa-solid fa-bars"></i>
+        <a href="index.html">
+            <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <span style="display:none; font-size:1.5rem; font-weight:800; color:#dc3545;">🥋 Mundo JJ</span>
+        </a>
+        <form class="d-flex gap-2">
+            <input class="form-control" type="text" placeholder="Buscar técnicas...">
+            <button class="btn btn-light">Buscar</button>
+        </form>
+    </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     MENU
+══════════════════════════════════════════ -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <ul class="navbar-nav mx-auto gap-3">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Técnicas</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Campeonatos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Atletas</a></li>
+            <li class="nav-item"><a class="nav-link active text-danger" href="dashboard.html">📊 Dashboard</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════ -->
+<main class="container my-4">
+
+    <!-- Botão voltar -->
+    <a href="index.html" class="btn btn-outline-dark mb-4">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+
+    <!-- Título da página -->
+    <section class="mb-4">
+        <h2 class="mb-1">📊 Dashboard de Técnicas</h2>
+        <p class="text-muted" style="margin-left:14px; font-size:.9rem;">
+            Visualização dinâmica dos dados cadastrados no Mundo JJ
+        </p>
+    </section>
+
+    <!-- ── KPIs ── -->
+    <div class="row g-3 mb-4" id="kpi-row">
+        <!-- gerado pelo JS -->
+    </div>
+
+    <!-- ── Gráficos — linha 1 ── -->
+    <div class="row g-4 mb-4">
+
+        <!-- Barras: técnicas por categoria -->
+        <div class="col-md-7">
+            <div class="chart-card fade-up">
+                <h5><i class="fa-solid fa-chart-bar text-danger me-1"></i> Técnicas por Categoria</h5>
+                <p class="chart-subtitle">Quantidade de técnicas cadastradas em cada categoria</p>
+                <canvas id="grafico-categoria" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Pizza: distribuição por dificuldade -->
+        <div class="col-md-5">
+            <div class="chart-card fade-up">
+                <h5><i class="fa-solid fa-chart-pie text-danger me-1"></i> Distribuição por Dificuldade</h5>
+                <p class="chart-subtitle">Proporção de técnicas por nível</p>
+                <canvas id="grafico-dificuldade" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Gráficos — linha 2 ── -->
+    <div class="row g-4 mb-4">
+
+        <!-- Linha: técnicas por mês de cadastro -->
+        <div class="col-md-8">
+            <div class="chart-card fade-up">
+                <h5><i class="fa-solid fa-chart-line text-danger me-1"></i> Cadastros por Mês</h5>
+                <p class="chart-subtitle">Evolução do número de técnicas cadastradas ao longo do tempo</p>
+                <canvas id="grafico-mes" height="160"></canvas>
+            </div>
+        </div>
+
+        <!-- Barras horizontais: destaque por categoria -->
+        <div class="col-md-4">
+            <div class="chart-card fade-up">
+                <h5><i class="fa-solid fa-star text-danger me-1"></i> Destaques por Categoria</h5>
+                <p class="chart-subtitle">Técnicas marcadas como destaque</p>
+                <canvas id="grafico-destaque" height="160"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Tabela de resumo ── -->
+    <section class="mb-5">
+        <h2 class="mb-3">📋 Listagem Completa</h2>
+        <div class="table-card">
+            <table class="table table-hover align-middle mb-0" id="tabela-tecnicas">
+                <thead class="table-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Dificuldade</th>
+                        <th>Destaque</th>
+                        <th>Data</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- gerado pelo JS -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="bg-dark text-white text-center p-3">
+    <p>© 2026 Mundo JJ</p>
+    <p>Instagram: @MundoJJ | YouTube: MundoJJ | Contato: (31)99999-9999</p>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- ══════════════════════════════════════════
+     DADOS (copiado de app.js para a página funcionar standalone;
+     se preferir, remova este bloco e mantenha só o <script src="app.js">)
+══════════════════════════════════════════ -->
+<script>
+const dados = {
+  "tecnicas": [
+    {
+      "id": 1, "nome": "Arm Lock",
+      "descricao": "Finalização clássica que hiperextende o cotovelo do adversário.",
+      "categoria": "Finalização", "dificuldade": "Intermediário",
+      "destaque": true,  "data": "10-01-2025"
+    },
+    {
+      "id": 2, "nome": "Arco e Flecha",
+      "descricao": "Estrangulamento poderoso aplicado com a lapela do kimono.",
+      "categoria": "Estrangulamento", "dificuldade": "Avançado",
+      "destaque": true,  "data": "15-01-2026"
+    },
+    {
+      "id": 3, "nome": "Kimura",
+      "descricao": "Chave de ombro altamente eficaz.",
+      "categoria": "Finalização", "dificuldade": "Iniciante",
+      "destaque": false, "data": "22-03-2026"
+    },
+    {
+      "id": 4, "nome": "Mata Leão",
+      "descricao": "Estrangulamento pelas costas.",
+      "categoria": "Estrangulamento", "dificuldade": "Iniciante",
+      "destaque": true,  "data": "16-02-2026"
+    },
+    {
+      "id": 5, "nome": "Triangle Choke",
+      "descricao": "Estrangulamento feito com as pernas.",
+      "categoria": "Estrangulamento", "dificuldade": "Intermediário",
+      "destaque": false, "data": "03-05-2026"
+    },
+    {
+      "id": 6, "nome": "Omoplata",
+      "descricao": "Chave de ombro aplicada com as pernas.",
+      "categoria": "Finalização", "dificuldade": "Avançado",
+      "destaque": true,  "data": "07-04-2026"
+    },
+    {
+      "id": 7, "nome": "Raspagem de Tesoura",
+      "descricao": "Varredura clássica da guarda fechada.",
+      "categoria": "Raspagem", "dificuldade": "Iniciante",
+      "destaque": false, "data": "15-03-2026"
+    },
+    {
+      "id": 8, "nome": "Guilhotina",
+      "descricao": "Estrangulamento frontal aplicado com o braço.",
+      "categoria": "Estrangulamento", "dificuldade": "Intermediário",
+      "destaque": false, "data": "20-02-2026"
+    }
+  ]
+};
+</script>
+
+<!-- ══════════════════════════════════════════
+     LÓGICA DO DASHBOARD
+══════════════════════════════════════════ -->
+<script>
+/* ─────────────────────────────────────────────
+   HELPERS
+───────────────────────────────────────────── */
+
+/** Conta ocorrências de um campo nos dados */
+function contarPor(campo) {
+    return dados.tecnicas.reduce((acc, t) => {
+        acc[t[campo]] = (acc[t[campo]] || 0) + 1;
+        return acc;
+    }, {});
+}
+
+/** Converte data "dd-mm-yyyy" para objeto Date */
+function parseData(str) {
+    const [d, m, y] = str.split('-').map(Number);
+    return new Date(y, m - 1, d);
+}
+
+/** Retorna rótulo "Mmm/AAAA" de uma data */
+function mesAno(date) {
+    return date.toLocaleDateString('pt-BR', { month: 'short', year: 'numeric' });
+}
+
+/* ─────────────────────────────────────────────
+   KPIs
+───────────────────────────────────────────── */
+function montarKPIs() {
+    const total      = dados.tecnicas.length;
+    const destaques  = dados.tecnicas.filter(t => t.destaque).length;
+    const categorias = Object.keys(contarPor('categoria')).length;
+    const niveis     = Object.keys(contarPor('dificuldade')).length;
+
+    const kpis = [
+        { icon: 'fa-scroll',       valor: total,      label: 'Técnicas Cadastradas' },
+        { icon: 'fa-star',         valor: destaques,  label: 'Técnicas em Destaque'  },
+        { icon: 'fa-tags',         valor: categorias, label: 'Categorias'             },
+        { icon: 'fa-layer-group',  valor: niveis,     label: 'Níveis de Dificuldade'  },
+    ];
+
+    const row = document.getElementById('kpi-row');
+    row.innerHTML = kpis.map((k, i) => `
+        <div class="col-6 col-md-3 fade-up" style="animation-delay:${i * .08}s">
+            <div class="kpi-card">
+                <div class="kpi-icon"><i class="fa-solid ${k.icon}"></i></div>
+                <div>
+                    <div class="kpi-value">${k.valor}</div>
+                    <div class="kpi-label">${k.label}</div>
+                </div>
+            </div>
+        </div>
+    `).join('');
+}
+
+/* ─────────────────────────────────────────────
+   GRÁFICO 1 — Barras: técnicas por categoria
+───────────────────────────────────────────── */
+function graficoCategorias() {
+    const contagem = contarPor('categoria');
+    const labels   = Object.keys(contagem);
+    const valores  = Object.values(contagem);
+
+    new Chart(document.getElementById('grafico-categoria'), {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Qtd. de técnicas',
+                data: valores,
+                backgroundColor: ['#dc3545', '#343a40', '#6c757d'],
+                borderRadius: 8,
+                borderSkipped: false,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => ` ${ctx.raw} técnica${ctx.raw > 1 ? 's' : ''}`
+                    }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: '#f0f0f0' }
+                },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+}
+
+/* ─────────────────────────────────────────────
+   GRÁFICO 2 — Pizza: distribuição por dificuldade
+───────────────────────────────────────────── */
+function graficoDificuldade() {
+    const contagem = contarPor('dificuldade');
+    const labels   = Object.keys(contagem);
+    const valores  = Object.values(contagem);
+
+    new Chart(document.getElementById('grafico-dificuldade'), {
+        type: 'doughnut',
+        data: {
+            labels,
+            datasets: [{
+                data: valores,
+                backgroundColor: ['#198754', '#fd7e14', '#dc3545'],
+                borderWidth: 3,
+                borderColor: '#fff',
+                hoverOffset: 8,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: { padding: 16, font: { size: 12 } }
+                },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => {
+                            const total = ctx.dataset.data.reduce((a, b) => a + b, 0);
+                            const pct   = ((ctx.raw / total) * 100).toFixed(0);
+                            return ` ${ctx.raw} técnica${ctx.raw > 1 ? 's' : ''} (${pct}%)`;
+                        }
+                    }
+                }
+            },
+            cutout: '60%'
+        }
+    });
+}
+
+/* ─────────────────────────────────────────────
+   GRÁFICO 3 — Linha: cadastros por mês
+───────────────────────────────────────────── */
+function graficoMes() {
+    // Agrupa por mês/ano ordenado
+    const mapa = {};
+    dados.tecnicas
+        .map(t => ({ ...t, _date: parseData(t.data) }))
+        .sort((a, b) => a._date - b._date)
+        .forEach(t => {
+            const chave = mesAno(t._date);
+            mapa[chave] = (mapa[chave] || 0) + 1;
+        });
+
+    // Acumula para linha de total acumulado
+    let acumulado = 0;
+    const labels  = Object.keys(mapa);
+    const mensal  = Object.values(mapa);
+    const cumul   = mensal.map(v => (acumulado += v));
+
+    new Chart(document.getElementById('grafico-mes'), {
+        type: 'line',
+        data: {
+            labels,
+            datasets: [
+                {
+                    label: 'Novas no mês',
+                    data: mensal,
+                    borderColor: '#dc3545',
+                    backgroundColor: 'rgba(220,53,69,.12)',
+                    fill: true,
+                    tension: .4,
+                    pointRadius: 5,
+                    pointBackgroundColor: '#dc3545',
+                },
+                {
+                    label: 'Total acumulado',
+                    data: cumul,
+                    borderColor: '#343a40',
+                    backgroundColor: 'transparent',
+                    borderDash: [6, 3],
+                    tension: .4,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#343a40',
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { padding: 14, font: { size: 11 } } }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: '#f0f0f0' }
+                },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+}
+
+/* ─────────────────────────────────────────────
+   GRÁFICO 4 — Barras horizontais: destaques por categoria
+───────────────────────────────────────────── */
+function graficoDestaque() {
+    const destaques = dados.tecnicas.filter(t => t.destaque);
+    const contagem  = destaques.reduce((acc, t) => {
+        acc[t.categoria] = (acc[t.categoria] || 0) + 1;
+        return acc;
+    }, {});
+    const labels  = Object.keys(contagem);
+    const valores = Object.values(contagem);
+
+    new Chart(document.getElementById('grafico-destaque'), {
+        type: 'bar',
+        data: {
+            labels,
+            datasets: [{
+                label: 'Destaques',
+                data: valores,
+                backgroundColor: ['#dc3545', '#343a40', '#6c757d'],
+                borderRadius: 6,
+                borderSkipped: false,
+            }]
+        },
+        options: {
+            indexAxis: 'y',
+            responsive: true,
+            plugins: {
+                legend: { display: false }
+            },
+            scales: {
+                x: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 },
+                    grid: { color: '#f0f0f0' }
+                },
+                y: { grid: { display: false } }
+            }
+        }
+    });
+}
+
+/* ─────────────────────────────────────────────
+   TABELA DE RESUMO
+───────────────────────────────────────────── */
+function montarTabela() {
+    const tbody = document.querySelector('#tabela-tecnicas tbody');
+    tbody.innerHTML = dados.tecnicas.map(t => `
+        <tr>
+            <td class="text-muted">${t.id}</td>
+            <td><strong>${t.nome}</strong></td>
+            <td><span class="badge-cat badge-${t.categoria}">${t.categoria}</span></td>
+            <td><span class="badge-dif badge-${t.dificuldade}">${t.dificuldade}</span></td>
+            <td>
+                ${t.destaque
+                    ? '<i class="fa-solid fa-star text-warning"></i> Destaque'
+                    : '<span class="text-muted">—</span>'}
+            </td>
+            <td class="text-muted">${t.data}</td>
+        </tr>
+    `).join('');
+}
+
+/* ─────────────────────────────────────────────
+   INICIALIZAÇÃO
+───────────────────────────────────────────── */
+document.addEventListener('DOMContentLoaded', () => {
+    montarKPIs();
+    graficoCategorias();
+    graficoDificuldade();
+    graficoMes();
+    graficoDestaque();
+    montarTabela();
+});
+</script>
+
+</body>
+</html>
