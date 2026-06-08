@@ -32,18 +32,17 @@ O projeto foi desenvolvido com HTML, CSS, Bootstrap e JavaScript puro. Os dados 
 
 ## 🖥️ Telas do Projeto
 
-![Foto 1 HomePage](public/img/fotoHomePage1.png)
-![Foto 2 HomePage](public/img/fotoHomePage2.png)
-![Foto 3 HomePage](public/img/fotoHomePage3.png)
-![Foto 1 Detalhes](public/img/fotoDetalhes1.png)
-![Foto 2 Detalhes](public/img/fotoDetalhes2.png)
-![Print 1 DashBoard](public/img/printdashboard.png)
-![Print 2 DashBoard](public/img/printdashboard1.png)
-![Login](public/img/login.png)
-![Cadastro](public/img/cadastro.png)
-![Cadastro Técnica](public/img/cadastroTecnica.png)
-![Favoritos](public/img/favoritos.png)
-
+![Foto 1 HomePage](img/fotoHomePage1.png)
+![Foto 2 HomePage](img/fotoHomePage2.png)
+![Foto 3 HomePage](img/fotoHomePage3.png)
+![Foto 1 Detalhes](img/fotoDetalhes1.png)
+![Foto 2 Detalhes](img/fotoDetalhes2.png)
+![Print 1 DashBoard](img/printdashboard.png)
+![Print 2 DashBoard](img/printdashboard1.png)
+![Login](img/login.png)
+![Cadastro](img/cadastro.png)
+![Cadastro Técnica](img/cadastroTecnica.png)
+![Favoritos](img/favoritos.png)
 ---
 
 ## 🚀 Como executar
