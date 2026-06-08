@@ -1,0 +1,262 @@
+{
+  "tecnicas": [
+    {
+      "id": "1",
+      "nome": "Arm Lock",
+      "descricao": "Finalização clássica que hiperextende o cotovelo do adversário.",
+      "conteudo": "O Arm Lock, também chamado de Juji-Gatame, é uma das finalizações mais tradicionais do Jiu-Jitsu. A técnica consiste em prender o braço do adversário entre as coxas e aplicar pressão sobre o cotovelo, forçando a hiperextensão da articulação. Pode ser aplicado a partir de diversas posições, como a guarda, a montada e o cem quilos.",
+      "categoria": "Finalização",
+      "dificuldade": "Intermediário",
+      "destaque": true,
+      "data": "10-01-2025",
+      "imagem_principal": "img/armlock.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Arm Lock pela guarda",
+          "imagem": "img/armLockGuarda.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Arm Lock pela montada",
+          "imagem": "img/armlockMontada.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Finalização do Arm Lock",
+          "imagem": "img/armlock.png"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "nome": "Arco e Flecha",
+      "descricao": "Estrangulamento poderoso aplicado com a lapela do kimono.",
+      "conteudo": "O Arco e Flecha é um dos estrangulamentos mais eficientes do Jiu-Jitsu com kimono. A técnica utiliza a lapela do adversário para criar pressão nas artérias do pescoço. Geralmente é aplicado a partir das costas do oponente, usando as pernas para controlar o corpo e os braços para tracionar a lapela. É considerada uma das finalizações mais elegantes da arte.",
+      "categoria": "Estrangulamento",
+      "dificuldade": "Avançado",
+      "destaque": true,
+      "data": "15-01-2026",
+      "imagem_principal": "img/arco-e-flecha.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Pegada da lapela",
+          "imagem": "img/arco-e-flecha-PegadaLapela.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Posicionamento das pernas",
+          "imagem": "img/arco-e-flecha-Pernas.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Finalização do Arco e Flecha",
+          "imagem": "img/arco-e-flecha.png"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "nome": "Kimura",
+      "descricao": "Chave de ombro altamente eficaz, homenagem ao lendário Masahiko Kimura.",
+      "conteudo": "O Kimura é uma chave articular que atua no ombro do adversário. A pegada característica envolve o pulso do oponente com uma mão e a própria mão com a outra, formando uma figura de 4. A técnica recebeu o nome do judoca japonês Masahiko Kimura, que a utilizou para vencer Hélio Gracie em 1951. Pode ser aplicado de diversas posições como a guarda fechada, half-guard e o lado.",
+      "categoria": "Finalização",
+      "dificuldade": "Iniciante",
+      "destaque": false,
+      "data": "22-03-2026",
+      "imagem_principal": "img/Kimura.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Pegada do Kimura",
+          "imagem": "img/Kimura-Pegada.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Kimura pela guarda",
+          "imagem": "img/Kimura-Guarda.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Aplicação do Kimura",
+          "imagem": "img/Kimura-F.png"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "nome": "Mata Leão",
+      "descricao": "Estrangulamento pelas costas, uma das finalizações mais conhecidas.",
+      "conteudo": "O Mata Leão, conhecido em inglês como Rear Naked Choke (RNC), é um dos estrangulamentos mais eficazes e reconhecidos nas artes marciais. É aplicado a partir do controle das costas do adversário, onde um braço envolve o pescoço e a mão se apoia no bíceps do outro braço, que por sua vez pressiona a cabeça do oponente. O estrangulamento atua nas artérias carótidas, causando inconsciência rapidamente.",
+      "categoria": "Estrangulamento",
+      "dificuldade": "Iniciante",
+      "destaque": true,
+      "data": "16-02-2026",
+      "imagem_principal": "img/mata-leao.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Tomada das costas",
+          "imagem": "img/mata-leao-P.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Encaixe do Mata Leão",
+          "imagem": "img/mata-leao-A.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Finalização do Mata Leão",
+          "imagem": "img/mata-leao-F.png"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "nome": "Triangle Choke",
+      "descricao": "Estrangulamento feito com as pernas, formando um triângulo ao redor do pescoço.",
+      "conteudo": "O Triangle Choke, ou Triângulo, é um estrangulamento aplicado com as pernas. Uma perna cruza sobre o pescoço do adversário enquanto a outra passa por baixo, prendendo um dos braços do oponente junto ao pescoço. A pressão das coxas sobre as artérias do pescoço causa o estrangulamento. É uma técnica muito versátil, podendo ser aplicada a partir da guarda, da montada e de outras posições.",
+      "categoria": "Estrangulamento",
+      "dificuldade": "Intermediário",
+      "destaque": false,
+      "data": "03-05-2026",
+      "imagem_principal": "img/triangulo.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Abertura para o triângulo",
+          "imagem": "img/triangulo-A.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Encaixe das pernas",
+          "imagem": "img/triangulo-P.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Finalização do Triângulo",
+          "imagem": "img/triangulo-F.png"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "nome": "Omoplata",
+      "descricao": "Chave de ombro aplicada com as pernas, direto da guarda.",
+      "conteudo": "O Omoplata é uma técnica única que utiliza as pernas para aplicar uma chave de ombro no adversário. A partir da guarda, uma perna gira sobre o ombro do oponente enquanto o corpo roda para o lado, criando pressão na articulação do ombro. Além de ser uma finalização, o Omoplata também pode ser usado como varredura ou para criar outros ataques encadeados.",
+      "categoria": "Finalização",
+      "dificuldade": "Avançado",
+      "destaque": true,
+      "data": "07-04-2026",
+      "imagem_principal": "img/omoplata.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Setup do Omoplata",
+          "imagem": "img/omoplata-S.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Rotação do corpo",
+          "imagem": "img/omoplata-R.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Pressão no ombro",
+          "imagem": "img/omoplata-P.png"
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "nome": "Raspagem de Tesoura",
+      "descricao": "Varredura clássica da guarda fechada para inverter a posição.",
+      "conteudo": "A Raspagem de Tesoura é uma das primeiras varreduras ensinadas no Jiu-Jitsu. A partir da guarda fechada, o praticante posiciona uma perna no quadril do adversário e a outra atrás do joelho, criando um movimento de tesoura que desequilibra e derruba o oponente, invertendo as posições. É a base para entender o conceito de raspagens no Jiu-Jitsu.",
+      "categoria": "Raspagem",
+      "dificuldade": "Iniciante",
+      "destaque": false,
+      "data": "15-03-2026",
+      "imagem_principal": "img/tesourinha.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Posição inicial da tesoura",
+          "imagem": "img/tesourinha-P.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Movimento de tesoura",
+          "imagem": "img/tesourinha-R.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Inversão de posição",
+          "imagem": "img/tesourinha-M.png"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "nome": "Guilhotina",
+      "descricao": "Estrangulamento frontal aplicado com o braço ao redor do pescoço.",
+      "conteudo": "A Guilhotina é um estrangulamento frontal aplicado envolvendo o pescoço do adversário com um braço. Pode ser finalizada de diversas formas: com os pés no chão, dentro da guarda fechada ou com a guarda alta. É muito utilizada quando o adversário tenta uma queda de soco ou abaixa a cabeça descuidadamente. Existe também a variação Arm-in Guilhotina, ainda mais poderosa.",
+      "categoria": "Estrangulamento",
+      "dificuldade": "Intermediário",
+      "destaque": false,
+      "data": "20-02-2026",
+      "imagem_principal": "img/guilhotina.png",
+      "fotos": [
+        {
+          "id": 1,
+          "titulo": "Encaixe da Guilhotina",
+          "imagem": "img/guilhotina-E.png"
+        },
+        {
+          "id": 2,
+          "titulo": "Guilhotina na guarda",
+          "imagem": "img/guilhotina-G.png"
+        },
+        {
+          "id": 3,
+          "titulo": "Finalização da Guilhotina",
+          "imagem": "img/guilhotina-F.png"
+        }
+      ]
+    }
+  ],
+  "usuarios": [
+    {
+      "id": "1",
+      "login": "admin",
+      "senha": "123",
+      "nome": "Administrador do Sistema",
+      "email": "admin@mundojj.com",
+      "admin": true
+    },
+    {
+      "id": "2",
+      "login": "user",
+      "senha": "123",
+      "nome": "Usuário Comum",
+      "email": "user@mundojj.com",
+      "admin": false
+    },
+    {
+      "id": "b_q79uRctuc",
+      "login": "Luiz",
+      "senha": "hisokaapld",
+      "nome": "LUIZ",
+      "email": "Luizdamasceno790@gmai.com",
+      "admin": false
+    }
+  ],
+  "favoritos": [
+    {
+      "usuarioId": "1",
+      "tecnicaId": "1",
+      "id": 1
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

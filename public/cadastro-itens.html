@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Técnicas - Mundo JJ</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/98e97fbcca.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <i class="fa-solid fa-bars"></i>
+        <a href="index.html">
+            <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;"
+                 onerror="this.style.display='none'">
+        </a>
+        <span></span>
+    </div>
+</header>
+
+<!-- MENU -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <ul class="navbar-nav mx-auto gap-3 flex-wrap">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item" id="menu-cadastro" style="display:none">
+                <a class="nav-link active" href="cadastro-itens.html">
+                    <i class="fa-solid fa-plus-circle me-1"></i>Cadastrar Técnica
+                </a>
+            </li>
+            <li class="nav-item" id="menu-favoritos" style="display:none">
+                <a class="nav-link" href="favoritos.html">
+                    <i class="fa-solid fa-heart me-1 text-danger"></i>Favoritos
+                </a>
+            </li>
+            <li class="nav-item" id="menu-login">
+                <a class="nav-link" href="login.html">
+                    <i class="fa-solid fa-right-to-bracket me-1"></i>Login
+                </a>
+            </li>
+            <li class="nav-item" id="menu-logout" style="display:none">
+                <a class="nav-link" href="#" id="btn-logout">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="dashboard.html">
+                    <i class="fa-solid fa-chart-bar me-1"></i>Dashboard
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main class="container my-4">
+
+    <a href="index.html" class="btn btn-outline-dark mb-4">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+
+    <!-- Aviso de acesso negado -->
+    <div id="aviso-admin" class="alert alert-danger d-none">
+        <i class="fa-solid fa-triangle-exclamation me-2"></i>
+        Acesso restrito. Apenas administradores podem acessar esta página.
+        <a href="index.html" class="alert-link ms-2">Voltar para a home</a>
+    </div>
+
+    <div id="conteudo-admin">
+
+        <h2 class="mb-4">🥋 Gerenciar Técnicas</h2>
+
+        <!-- FORMULÁRIO -->
+        <div class="card shadow-sm mb-5">
+            <div class="card-header bg-dark text-white fw-bold">
+                <i class="fa-solid fa-plus me-2"></i>
+                <span id="titulo-form">Nova Técnica</span>
+            </div>
+            <div class="card-body">
+
+                <div id="msg-form-erro"    class="alert alert-danger  d-none"></div>
+                <div id="msg-form-sucesso" class="alert alert-success d-none"></div>
+
+                <input type="hidden" id="tecnica-id">
+
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Nome da técnica *</label>
+                        <input type="text" class="form-control" id="f-nome" placeholder="Ex: Arm Lock">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-semibold">Imagem principal (caminho)</label>
+                        <input type="text" class="form-control" id="f-imagem" placeholder="img/armlock.png">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label fw-semibold">Descrição curta *</label>
+                        <input type="text" class="form-control" id="f-descricao" placeholder="Breve descrição da técnica">
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label fw-semibold">Conteúdo detalhado *</label>
+                        <textarea class="form-control" id="f-conteudo" rows="4"
+                                  placeholder="Explicação completa da técnica..."></textarea>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Categoria *</label>
+                        <select class="form-select" id="f-categoria">
+                            <option value="">Selecione...</option>
+                            <option value="Finalização">Finalização</option>
+                            <option value="Estrangulamento">Estrangulamento</option>
+                            <option value="Raspagem">Raspagem</option>
+                            <option value="Guarda">Guarda</option>
+                            <option value="Passagem">Passagem</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Dificuldade *</label>
+                        <select class="form-select" id="f-dificuldade">
+                            <option value="">Selecione...</option>
+                            <option value="Iniciante">Iniciante</option>
+                            <option value="Intermediário">Intermediário</option>
+                            <option value="Avançado">Avançado</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-semibold">Data de cadastro *</label>
+                        <input type="text" class="form-control" id="f-data" placeholder="dd-mm-aaaa">
+                    </div>
+                    <div class="col-md-12">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="f-destaque">
+                            <label class="form-check-label fw-semibold" for="f-destaque">
+                                Marcar como destaque
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 mt-4">
+                    <button class="btn btn-danger" id="btn-salvar">
+                        <i class="fa-solid fa-floppy-disk me-2"></i>Salvar
+                    </button>
+                    <button class="btn btn-outline-secondary" id="btn-cancelar">
+                        <i class="fa-solid fa-xmark me-2"></i>Cancelar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- LISTA DE TÉCNICAS -->
+        <h2 class="mb-3">📋 Técnicas Cadastradas</h2>
+        <div class="table-responsive card shadow-sm">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Categoria</th>
+                        <th>Dificuldade</th>
+                        <th>Destaque</th>
+                        <th>Data</th>
+                        <th class="text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="tabela-body">
+                    <tr>
+                        <td colspan="6" class="text-center py-3">
+                            <div class="spinner-border spinner-border-sm text-danger"></div>
+                            Carregando...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div><!-- fim conteudo-admin -->
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    <p class="mb-0">© 2026 Mundo JJ</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+
+<script>
+const API = 'http://localhost:3000';
+
+// ── Verifica se é admin ──
+document.addEventListener('DOMContentLoaded', async () => {
+    const usuario = getUsuarioLogado();
+    if (!usuario || !usuario.admin) {
+        document.getElementById('conteudo-admin').style.display = 'none';
+        document.getElementById('aviso-admin').classList.remove('d-none');
+        return;
+    }
+    await carregarTabela();
+    preencherDataHoje();
+});
+
+function preencherDataHoje() {
+    const hoje = new Date();
+    const d = String(hoje.getDate()).padStart(2, '0');
+    const m = String(hoje.getMonth() + 1).padStart(2, '0');
+    const y = hoje.getFullYear();
+    document.getElementById('f-data').value = `${d}-${m}-${y}`;
+}
+
+// ── Carregar tabela ──
+async function carregarTabela() {
+    const res = await fetch(`${API}/tecnicas`);
+    const tecnicas = await res.json();
+    const tbody = document.getElementById('tabela-body');
+
+    if (tecnicas.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="text-center text-muted py-3">Nenhuma técnica cadastrada.</td></tr>`;
+        return;
+    }
+
+    tbody.innerHTML = tecnicas.map(t => `
+        <tr>
+            <td><strong>${t.nome}</strong></td>
+            <td><span class="badge bg-secondary">${t.categoria}</span></td>
+            <td><span class="badge bg-dark">${t.dificuldade}</span></td>
+            <td>${t.destaque ? '<i class="fa-solid fa-star text-warning"></i>' : '<span class="text-muted">—</span>'}</td>
+            <td class="text-muted">${t.data}</td>
+            <td class="text-center">
+                <button class="btn btn-sm btn-outline-primary me-1" onclick="editarTecnica('${t.id}')">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="btn btn-sm btn-outline-danger" onclick="excluirTecnica('${t.id}', '${t.nome}')">
+                    <i class="fa-solid fa-trash"></i>
+                </button>
+            </td>
+        </tr>
+    `).join('');
+}
+
+// ── Salvar (criar ou editar) ──
+document.getElementById('btn-salvar').addEventListener('click', async () => {
+    const id         = document.getElementById('tecnica-id').value;
+    const nome       = document.getElementById('f-nome').value.trim();
+    const descricao  = document.getElementById('f-descricao').value.trim();
+    const conteudo   = document.getElementById('f-conteudo').value.trim();
+    const categoria  = document.getElementById('f-categoria').value;
+    const dificuldade= document.getElementById('f-dificuldade').value;
+    const data       = document.getElementById('f-data').value.trim();
+    const imagem     = document.getElementById('f-imagem').value.trim() || 'img/placeholder.png';
+    const destaque   = document.getElementById('f-destaque').checked;
+
+    const msgErro    = document.getElementById('msg-form-erro');
+    const msgSucesso = document.getElementById('msg-form-sucesso');
+    msgErro.classList.add('d-none');
+    msgSucesso.classList.add('d-none');
+
+    if (!nome || !descricao || !conteudo || !categoria || !dificuldade || !data) {
+        msgErro.textContent = 'Preencha todos os campos obrigatórios (*).';
+        msgErro.classList.remove('d-none');
+        return;
+    }
+
+    const tecnica = {
+        nome, descricao, conteudo, categoria,
+        dificuldade, data, destaque,
+        imagem_principal: imagem,
+        fotos: []
+    };
+
+    try {
+        let res;
+        if (id) {
+            res = await fetch(`${API}/tecnicas/${id}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ id, ...tecnica })
+            });
+            msgSucesso.textContent = 'Técnica atualizada com sucesso!';
+        } else {
+            res = await fetch(`${API}/tecnicas`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(tecnica)
+            });
+            msgSucesso.textContent = 'Técnica cadastrada com sucesso!';
+        }
+
+        if (!res.ok) throw new Error();
+
+        msgSucesso.classList.remove('d-none');
+        limparForm();
+        await carregarTabela();
+
+    } catch {
+        msgErro.textContent = 'Erro ao salvar. Verifique o servidor.';
+        msgErro.classList.remove('d-none');
+    }
+});
+
+// ── Editar ──
+async function editarTecnica(id) {
+    const res = await fetch(`${API}/tecnicas/${id}`);
+    const t   = await res.json();
+
+    document.getElementById('tecnica-id').value    = t.id;
+    document.getElementById('f-nome').value        = t.nome;
+    document.getElementById('f-descricao').value   = t.descricao;
+    document.getElementById('f-conteudo').value    = t.conteudo;
+    document.getElementById('f-categoria').value   = t.categoria;
+    document.getElementById('f-dificuldade').value = t.dificuldade;
+    document.getElementById('f-data').value        = t.data;
+    document.getElementById('f-imagem').value      = t.imagem_principal;
+    document.getElementById('f-destaque').checked  = t.destaque;
+    document.getElementById('titulo-form').textContent = 'Editar Técnica';
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── Excluir ──
+async function excluirTecnica(id, nome) {
+    if (!confirm(`Excluir a técnica "${nome}"? Esta ação não pode ser desfeita.`)) return;
+
+    await fetch(`${API}/tecnicas/${id}`, { method: 'DELETE' });
+    await carregarTabela();
+}
+
+// ── Cancelar / limpar ──
+document.getElementById('btn-cancelar').addEventListener('click', limparForm);
+
+function limparForm() {
+    document.getElementById('tecnica-id').value    = '';
+    document.getElementById('f-nome').value        = '';
+    document.getElementById('f-descricao').value   = '';
+    document.getElementById('f-conteudo').value    = '';
+    document.getElementById('f-categoria').value   = '';
+    document.getElementById('f-dificuldade').value = '';
+    document.getElementById('f-imagem').value      = '';
+    document.getElementById('f-destaque').checked  = false;
+    document.getElementById('titulo-form').textContent = 'Nova Técnica';
+    document.getElementById('msg-form-erro').classList.add('d-none');
+    document.getElementById('msg-form-sucesso').classList.add('d-none');
+    preencherDataHoje();
+}
+</script>
+
+</body>
+</html>

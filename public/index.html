@@ -11,84 +11,145 @@
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="styles.css">
 
-    <!-- Font Awesome (ícones) -->
+    <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/98e97fbcca.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-<!-- HEADER -->
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
 <header class="bg-dark text-white p-3">
-    <div class="container d-flex justify-content-between align-items-center">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
         <i class="fa-solid fa-bars"></i>
-        <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;">
+        <a href="index.html">
+            <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;"
+                 onerror="this.style.display='none'">
+        </a>
         <form class="d-flex gap-2">
-            <input class="form-control" type="text" placeholder="Buscar técnicas...">
-            <button class="btn btn-light">Buscar</button>
+            <input class="form-control" type="text" placeholder="Buscar técnicas..."
+                   id="input-pesquisa">
+            <button class="btn btn-light" type="button" id="btn-pesquisa">Buscar</button>
         </form>
     </div>
 </header>
 
-<!-- MENU -->
+<!-- ══════════════════════════════════════════
+     MENU
+══════════════════════════════════════════ -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <ul class="navbar-nav mx-auto gap-3">
-            <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Técnicas</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Campeonatos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Atletas</a></li>
-            <li class="nav-item"><a class="nav-link text-danger" href="dashboard.html">📊 Dashboard</a></li>
+        <ul class="navbar-nav mx-auto gap-3 flex-wrap">
+            <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+            </li>
+            <li class="nav-item" id="menu-cadastro" style="display:none">
+                <a class="nav-link" href="cadastro-itens.html">
+                    <i class="fa-solid fa-plus-circle me-1"></i>Cadastrar Técnica
+                </a>
+            </li>
+            <li class="nav-item" id="menu-favoritos" style="display:none">
+                <a class="nav-link" href="favoritos.html">
+                    <i class="fa-solid fa-heart me-1 text-danger"></i>Favoritos
+                </a>
+            </li>
+            <li class="nav-item" id="menu-login">
+                <a class="nav-link" href="login.html">
+                    <i class="fa-solid fa-right-to-bracket me-1"></i>Login
+                </a>
+            </li>
+            <li class="nav-item" id="menu-logout" style="display:none">
+                <a class="nav-link" href="#" id="btn-logout">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="dashboard.html">
+                    <i class="fa-solid fa-chart-bar me-1"></i>Dashboard
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
 
-<!-- MAIN -->
+<!-- ══════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════ -->
 <main class="container my-4">
 
-    <!-- SEÇÃO 1 - CARROSSEL DE DESTAQUES -->
+    <!-- SEÇÃO 1 - CARROSSEL -->
     <section class="mb-5">
         <h2 class="mb-3">Técnicas em Destaque</h2>
         <div id="carrossel-destaques">
-            <!-- Montado dinamicamente pelo app.js -->
+            <div class="text-center py-4">
+                <div class="spinner-border text-danger" role="status"></div>
+                <p class="mt-2 text-muted">Carregando destaques...</p>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 2 - TODOS OS CARDS -->
+    <!-- SEÇÃO 2 - CARDS COM PESQUISA -->
     <section class="mb-5">
-        <h2 class="mb-3">Todas as Técnicas</h2>
+        <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap gap-2">
+            <h2 class="mb-0">Todas as Técnicas</h2>
+            <div class="d-flex gap-2">
+                <input class="form-control form-control-sm" type="text"
+                       placeholder="Filtrar técnicas..."
+                       id="input-pesquisa-inline">
+            </div>
+        </div>
         <div id="lista-tecnicas" class="row">
-            <!-- Montado dinamicamente pelo app.js -->
+            <div class="col-12 text-center py-4">
+                <div class="spinner-border text-danger" role="status"></div>
+                <p class="mt-2 text-muted">Carregando técnicas...</p>
+            </div>
         </div>
     </section>
 
-    <!-- SEÇÃO 3 - INFORMAÇÕES DO ALUNO -->
+    <!-- SEÇÃO 3 - VISUALIZAÇÃO AVANÇADA (DASHBOARD INLINE) -->
     <section class="mb-5">
-        <h2 class="mb-3">Informações do Aluno</h2>
-        <hr>
-        <div class="row">
+        <h2 class="mb-3">📊 Estatísticas das Técnicas</h2>
+        <div class="row g-3">
             <div class="col-md-6">
-                <h5>Sobre</h5>
-                <p>
-                    Site criado como projeto acadêmico para a disciplina de
-                    Desenvolvimento Web. O Mundo JJ tem como objetivo divulgar
-                    e ensinar técnicas do Jiu-Jitsu, esporte que une disciplina,
-                    respeito e superação.
-                </p>
+                <div class="card shadow-sm p-3">
+                    <h6 class="fw-bold mb-3">Técnicas por Categoria</h6>
+                    <canvas id="grafico-categoria-home" height="200"></canvas>
+                </div>
             </div>
             <div class="col-md-6">
-                <h5>Autoria</h5>
-                <div class="d-flex align-items-center gap-2 mb-2">
-                    <i class="fa-solid fa-circle-user fa-2x"></i>
-                    <div>
-                        <p class="mb-0"><strong>Aluno:</strong> Luiz Felipe de Souza Damasceno</p>
-                        <p class="mb-0"><strong>Curso:</strong> Sistemas de Informação</p>
-                        <p class="mb-0"><strong>Turma:</strong> Noite</p>
-                    </div>
+                <div class="card shadow-sm p-3">
+                    <h6 class="fw-bold mb-3">Distribuição por Dificuldade</h6>
+                    <canvas id="grafico-dificuldade-home" height="200"></canvas>
                 </div>
-                <div class="mt-2">
-                    <strong>Redes Sociais:</strong>
-                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-instagram fa-lg"></i></a>
-                    <a href="#" class="ms-2 text-dark"><i class="fa-brands fa-github fa-lg"></i></a>
+            </div>
+        </div>
+        <div class="text-end mt-2">
+            <a href="dashboard.html" class="btn btn-outline-danger btn-sm">
+                Ver dashboard completo <i class="fa-solid fa-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- SEÇÃO 4 - INFORMAÇÕES DO ALUNO -->
+    <section class="mb-5">
+        <h2 class="mb-3">Sobre o Autor</h2>
+        <hr>
+        <div class="row align-items-center">
+            <div class="col-md-2 text-center mb-3 mb-md-0">
+                <i class="fa-solid fa-circle-user fa-5x text-secondary"></i>
+            </div>
+            <div class="col-md-10">
+                <h5 class="mb-1">Luiz Felipe de Souza Damasceno</h5>
+                <p class="text-muted mb-1">Sistemas de Informação — Turma Noite</p>
+                <p class="mb-2">
+                    Apaixonado por tecnologia e artes marciais. Este site foi criado como projeto
+                    acadêmico para a disciplina de Desenvolvimento Web, unindo dois mundos:
+                    programação e o universo do Jiu-Jitsu Brasileiro.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-dark fs-5"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-dark fs-5"><i class="fa-brands fa-github"></i></a>
                 </div>
             </div>
         </div>
@@ -96,7 +157,9 @@
 
 </main>
 
-<!-- FOOTER -->
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
 <footer class="bg-dark text-white text-center p-3">
     <p>© 2026 Mundo JJ</p>
     <p>Instagram: @MundoJJ | YouTube: MundoJJ | Contato: (31)99999-9999</p>
@@ -105,8 +168,81 @@
 <!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- app.js carregado por último -->
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+<!-- app.js -->
 <script src="app.js"></script>
+
+<!-- Gráficos inline da home -->
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    // Pesquisa inline (segunda barra)
+    const inputInline = document.getElementById('input-pesquisa-inline');
+    if (inputInline) {
+        inputInline.addEventListener('keyup', (e) => {
+            montarCards(inputInline.value);
+        });
+    }
+
+    // Gráficos mini
+    const res = await fetch('http://localhost:3000/tecnicas');
+    const tecnicas = await res.json();
+
+    // Barras: por categoria
+    const porCat = tecnicas.reduce((acc, t) => {
+        acc[t.categoria] = (acc[t.categoria] || 0) + 1;
+        return acc;
+    }, {});
+    new Chart(document.getElementById('grafico-categoria-home'), {
+        type: 'bar',
+        data: {
+            labels: Object.keys(porCat),
+            datasets: [{
+                label: 'Qtd',
+                data: Object.values(porCat),
+                backgroundColor: ['#dc3545','#343a40','#6c757d'],
+                borderRadius: 6,
+                borderSkipped: false
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: {
+                y: { beginAtZero: true, ticks: { stepSize: 1 } },
+                x: { grid: { display: false } }
+            }
+        }
+    });
+
+    // Pizza: por dificuldade
+    const porDif = tecnicas.reduce((acc, t) => {
+        acc[t.dificuldade] = (acc[t.dificuldade] || 0) + 1;
+        return acc;
+    }, {});
+    new Chart(document.getElementById('grafico-dificuldade-home'), {
+        type: 'doughnut',
+        data: {
+            labels: Object.keys(porDif),
+            datasets: [{
+                data: Object.values(porDif),
+                backgroundColor: ['#198754','#fd7e14','#dc3545'],
+                borderWidth: 3,
+                borderColor: '#fff',
+                hoverOffset: 6
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { position: 'bottom', labels: { padding: 12, font: { size: 11 } } }
+            },
+            cutout: '55%'
+        }
+    });
+});
+</script>
 
 </body>
 </html>

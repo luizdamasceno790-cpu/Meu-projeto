@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favoritos - Mundo JJ</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/98e97fbcca.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="bg-dark text-white p-3">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
+        <i class="fa-solid fa-bars"></i>
+        <a href="index.html">
+            <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;"
+                 onerror="this.style.display='none'">
+        </a>
+        <span></span>
+    </div>
+</header>
+
+<!-- MENU -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <ul class="navbar-nav mx-auto gap-3 flex-wrap">
+            <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+            <li class="nav-item" id="menu-cadastro" style="display:none">
+                <a class="nav-link" href="cadastro-itens.html">
+                    <i class="fa-solid fa-plus-circle me-1"></i>Cadastrar Técnica
+                </a>
+            </li>
+            <li class="nav-item" id="menu-favoritos" style="display:none">
+                <a class="nav-link active" href="favoritos.html">
+                    <i class="fa-solid fa-heart me-1 text-danger"></i>Favoritos
+                </a>
+            </li>
+            <li class="nav-item" id="menu-login">
+                <a class="nav-link" href="login.html">
+                    <i class="fa-solid fa-right-to-bracket me-1"></i>Login
+                </a>
+            </li>
+            <li class="nav-item" id="menu-logout" style="display:none">
+                <a class="nav-link" href="#" id="btn-logout">
+                    <i class="fa-solid fa-right-from-bracket me-1"></i>Logout
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-danger" href="dashboard.html">
+                    <i class="fa-solid fa-chart-bar me-1"></i>Dashboard
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- MAIN -->
+<main class="container my-4">
+
+    <a href="index.html" class="btn btn-outline-dark mb-4">
+        <i class="fa-solid fa-arrow-left"></i> Voltar
+    </a>
+
+    <section>
+        <h2 class="mb-1">❤️ Minhas Técnicas Favoritas</h2>
+        <p class="text-muted ms-2 mb-4" id="subtitulo-favoritos">Carregando...</p>
+
+        <div id="lista-favoritos" class="row">
+            <div class="col-12 text-center py-4">
+                <div class="spinner-border text-danger" role="status"></div>
+                <p class="mt-2 text-muted">Carregando favoritos...</p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white text-center p-3">
+    <p class="mb-0">© 2026 Mundo JJ</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="app.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const usuario = getUsuarioLogado();
+    const subtitulo = document.getElementById('subtitulo-favoritos');
+    if (usuario) {
+        subtitulo.textContent = `Olá, ${usuario.nome}! Veja suas técnicas salvas.`;
+    } else {
+        subtitulo.textContent = 'Faça login para ver seus favoritos.';
+    }
+});
+</script>
+
+</body>
+</html>
