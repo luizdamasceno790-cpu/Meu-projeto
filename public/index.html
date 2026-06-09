@@ -17,9 +17,7 @@
 
 <body>
 
-<!-- ══════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════ -->
+<!-- HEADER -->
 <header class="bg-dark text-white p-3">
     <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
         <i class="fa-solid fa-bars"></i>
@@ -27,17 +25,18 @@
             <img src="img/Logo.png" alt="Logo Mundo JJ" style="height:70px;"
                  onerror="this.style.display='none'">
         </a>
-        <form class="d-flex gap-2">
-            <input class="form-control" type="text" placeholder="Buscar técnicas..."
-                   id="input-pesquisa">
-            <button class="btn btn-light" type="button" id="btn-pesquisa">Buscar</button>
-        </form>
+        <div class="d-flex align-items-center gap-3 flex-wrap">
+            <span id="saudacao-usuario" class="text-white fw-semibold"></span>
+            <form class="d-flex gap-2">
+                <input class="form-control" type="text" placeholder="Buscar técnicas..."
+                       id="input-pesquisa">
+                <button class="btn btn-light" type="button" id="btn-pesquisa">Buscar</button>
+            </form>
+        </div>
     </div>
 </header>
 
-<!-- ══════════════════════════════════════════
-     MENU
-══════════════════════════════════════════ -->
+<!-- MENU -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <ul class="navbar-nav mx-auto gap-3 flex-wrap">
@@ -73,9 +72,7 @@
     </div>
 </nav>
 
-<!-- ══════════════════════════════════════════
-     MAIN
-══════════════════════════════════════════ -->
+<!-- MAIN -->
 <main class="container my-4">
 
     <!-- SEÇÃO 1 - CARROSSEL -->
@@ -107,7 +104,7 @@
         </div>
     </section>
 
-    <!-- SEÇÃO 3 - VISUALIZAÇÃO AVANÇADA (DASHBOARD INLINE) -->
+    <!-- SEÇÃO 3 - VISUALIZAÇÃO AVANÇADA -->
     <section class="mb-5">
         <h2 class="mb-3">📊 Estatísticas das Técnicas</h2>
         <div class="row g-3">
@@ -157,9 +154,7 @@
 
 </main>
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="bg-dark text-white text-center p-3">
     <p>© 2026 Mundo JJ</p>
     <p>Instagram: @MundoJJ | YouTube: MundoJJ | Contato: (31)99999-9999</p>
@@ -177,10 +172,10 @@
 <!-- Gráficos inline da home -->
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
-    // Pesquisa inline (segunda barra)
+    // Pesquisa inline
     const inputInline = document.getElementById('input-pesquisa-inline');
     if (inputInline) {
-        inputInline.addEventListener('keyup', (e) => {
+        inputInline.addEventListener('keyup', () => {
             montarCards(inputInline.value);
         });
     }

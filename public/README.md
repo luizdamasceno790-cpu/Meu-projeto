@@ -43,6 +43,8 @@ O projeto foi desenvolvido com HTML, CSS, Bootstrap e JavaScript puro. Os dados 
 ![Cadastro](img/cadastro.png)
 ![Cadastro Técnica](img/cadastroTecnica.png)
 ![Favoritos](img/favoritos.png)
+![Nome de Usuário](img/NomeUsuario.png)
+![Tela Favoritos](img/TelaFavorito.png)
 ---
 
 ## 🚀 Como executar

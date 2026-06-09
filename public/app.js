@@ -18,17 +18,20 @@ function atualizarMenu() {
     const menuLogout    = document.getElementById('menu-logout');
     const menuFavoritos = document.getElementById('menu-favoritos');
     const menuCadastro  = document.getElementById('menu-cadastro');
+    const saudacao      = document.getElementById('saudacao-usuario');
 
     if (usuario) {
         if (menuLogin)     menuLogin.style.display     = 'none';
         if (menuLogout)    menuLogout.style.display    = 'block';
         if (menuFavoritos) menuFavoritos.style.display = 'block';
         if (menuCadastro)  menuCadastro.style.display  = usuario.admin ? 'block' : 'none';
+        if (saudacao)      saudacao.textContent        = `Olá, ${usuario.nome.split(' ')[0]}`;
     } else {
         if (menuLogin)     menuLogin.style.display     = 'block';
         if (menuLogout)    menuLogout.style.display    = 'none';
         if (menuFavoritos) menuFavoritos.style.display = 'none';
         if (menuCadastro)  menuCadastro.style.display  = 'none';
+        if (saudacao)      saudacao.textContent        = '';
     }
 }
 
@@ -38,24 +41,31 @@ function logout() {
 }
 
 // ============================================================
-// FAVORITOS
+// FAVORITOS — localStorage por usuário
 // ============================================================
-async function getFavoritos() {
+function getChaveFavoritos() {
     const usuario = getUsuarioLogado();
-    if (!usuario) return [];
-    const res = await fetch(`${API}/favoritos?usuarioId=${usuario.id}`);
-    return await res.json();
+    return usuario ? `favoritos_${usuario.id}` : null;
 }
 
-async function isFavorito(tecnicaId) {
-    const usuario = getUsuarioLogado();
-    if (!usuario) return false;
-    const res = await fetch(`${API}/favoritos?usuarioId=${usuario.id}&tecnicaId=${tecnicaId}`);
-    const lista = await res.json();
-    return lista.length > 0 ? lista[0] : null;
+function getFavoritosLocal() {
+    const chave = getChaveFavoritos();
+    if (!chave) return [];
+    const dados = localStorage.getItem(chave);
+    return dados ? JSON.parse(dados) : [];
 }
 
-async function toggleFavorito(tecnicaId, btnEl) {
+function salvarFavoritosLocal(ids) {
+    const chave = getChaveFavoritos();
+    if (!chave) return;
+    localStorage.setItem(chave, JSON.stringify(ids));
+}
+
+function isFavoritoLocal(tecnicaId) {
+    return getFavoritosLocal().includes(String(tecnicaId));
+}
+
+function toggleFavoritoLocal(tecnicaId, btnEl) {
     const usuario = getUsuarioLogado();
     if (!usuario) {
         alert('Você precisa estar logado para favoritar!');
@@ -63,20 +73,20 @@ async function toggleFavorito(tecnicaId, btnEl) {
         return;
     }
 
-    const fav = await isFavorito(tecnicaId);
-    if (fav) {
-        await fetch(`${API}/favoritos/${fav.id}`, { method: 'DELETE' });
+    const id = String(tecnicaId);
+    let favoritos = getFavoritosLocal();
+
+    if (favoritos.includes(id)) {
+        favoritos = favoritos.filter(f => f !== id);
         btnEl.innerHTML = '<i class="fa-regular fa-heart"></i>';
         btnEl.classList.remove('favoritado');
     } else {
-        await fetch(`${API}/favoritos`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ usuarioId: usuario.id, tecnicaId: tecnicaId })
-        });
+        favoritos.push(id);
         btnEl.innerHTML = '<i class="fa-solid fa-heart text-danger"></i>';
         btnEl.classList.add('favoritado');
     }
+
+    salvarFavoritosLocal(favoritos);
 }
 
 // ============================================================
@@ -147,12 +157,7 @@ async function montarCards(filtro = '') {
         todasTecnicas = await res.json();
     }
 
-    const usuario = getUsuarioLogado();
-    let favoritosIds = [];
-    if (usuario) {
-        const favs = await getFavoritos();
-        favoritosIds = favs.map(f => f.tecnicaId);
-    }
+    const favoritosIds = getFavoritosLocal();
 
     const termo = filtro.toLowerCase().trim();
     const tecnicas = termo
@@ -170,14 +175,14 @@ async function montarCards(filtro = '') {
     }
 
     const cards = tecnicas.map(tecnica => {
-        const ehFav = favoritosIds.includes(tecnica.id);
+        const ehFav = favoritosIds.includes(String(tecnica.id));
         const iconeCoracao = ehFav
             ? '<i class="fa-solid fa-heart text-danger"></i>'
             : '<i class="fa-regular fa-heart"></i>';
 
         return `
             <div class="col-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm ${ehFav ? 'border-danger' : ''}">
                     <img src="${tecnica.imagem_principal}"
                          class="card-img-top"
                          alt="${tecnica.nome}"
@@ -189,12 +194,13 @@ async function montarCards(filtro = '') {
                         <div class="mb-2">
                             <span class="badge bg-secondary me-1">${tecnica.categoria}</span>
                             <span class="badge bg-dark">${tecnica.dificuldade}</span>
+                            ${ehFav ? '<span class="badge bg-danger">❤️ Favorito</span>' : ''}
                         </div>
                         <div class="d-flex gap-2 mt-auto">
                             <a href="detalhe.html?id=${tecnica.id}" class="btn btn-danger btn-sm flex-grow-1">
                                 Ver técnica
                             </a>
-                            <button class="btn btn-outline-secondary btn-sm btn-favorito"
+                            <button class="btn btn-outline-secondary btn-sm btn-favorito ${ehFav ? 'favoritado' : ''}"
                                     data-id="${tecnica.id}"
                                     title="Favoritar">
                                 ${iconeCoracao}
@@ -208,12 +214,24 @@ async function montarCards(filtro = '') {
 
     container.innerHTML = cards.join('');
 
-    // Eventos dos botões de favorito
     document.querySelectorAll('.btn-favorito').forEach(btn => {
-        btn.addEventListener('click', async (e) => {
+        btn.addEventListener('click', (e) => {
             e.preventDefault();
             const id = btn.dataset.id;
-            await toggleFavorito(id, btn);
+            toggleFavoritoLocal(id, btn);
+            // Atualiza borda e badge sem recarregar tudo
+            const card = btn.closest('.card');
+            const badge = btn.closest('.card-body').querySelector('.badge.bg-danger');
+            if (btn.classList.contains('favoritado')) {
+                card.classList.add('border-danger');
+                if (!badge) {
+                    btn.closest('.card-body').querySelector('.mb-2').insertAdjacentHTML(
+                        'beforeend', '<span class="badge bg-danger">❤️ Favorito</span>');
+                }
+            } else {
+                card.classList.remove('border-danger');
+                if (badge) badge.remove();
+            }
         });
     });
 }
@@ -254,8 +272,8 @@ async function montarDetalhe() {
     }
 
     const tecnica = await res.json();
-    const fav = await isFavorito(tecnica.id);
-    const iconeCoracao = fav
+    const ehFav = isFavoritoLocal(tecnica.id);
+    const iconeCoracao = ehFav
         ? '<i class="fa-solid fa-heart text-danger"></i>'
         : '<i class="fa-regular fa-heart"></i>';
 
@@ -289,11 +307,10 @@ async function montarDetalhe() {
         </div>
     `;
 
-    // Evento favorito no detalhe
     const btnFav = document.querySelector('.btn-favorito');
     if (btnFav) {
-        btnFav.addEventListener('click', async () => {
-            await toggleFavorito(tecnica.id, btnFav);
+        btnFav.addEventListener('click', () => {
+            toggleFavoritoLocal(tecnica.id, btnFav);
         });
     }
 
@@ -315,7 +332,7 @@ async function montarDetalhe() {
 }
 
 // ============================================================
-// PÁGINA DE FAVORITOS
+// PÁGINA DE FAVORITOS — localStorage
 // ============================================================
 async function montarFavoritos() {
     const container = document.getElementById('lista-favoritos');
@@ -330,8 +347,9 @@ async function montarFavoritos() {
         return;
     }
 
-    const favs = await getFavoritos();
-    if (favs.length === 0) {
+    const favoritosIds = getFavoritosLocal();
+
+    if (favoritosIds.length === 0) {
         container.innerHTML = `
             <div class="col-12 text-center py-4">
                 <p class="text-muted">Você ainda não tem técnicas favoritas. <a href="index.html">Explorar técnicas</a></p>
@@ -339,13 +357,13 @@ async function montarFavoritos() {
         return;
     }
 
-    const cards = await Promise.all(favs.map(async fav => {
-        const res = await fetch(`${API}/tecnicas/${fav.tecnicaId}`);
+    const cards = await Promise.all(favoritosIds.map(async id => {
+        const res = await fetch(`${API}/tecnicas/${id}`);
         if (!res.ok) return '';
         const tecnica = await res.json();
         return `
             <div class="col-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 shadow-sm">
+                <div class="card h-100 shadow-sm border-danger">
                     <img src="${tecnica.imagem_principal}"
                          class="card-img-top"
                          alt="${tecnica.nome}"
@@ -364,7 +382,6 @@ async function montarFavoritos() {
                             </a>
                             <button class="btn btn-outline-secondary btn-sm btn-favorito favoritado"
                                     data-id="${tecnica.id}"
-                                    data-favid="${fav.id}"
                                     title="Remover favorito">
                                 <i class="fa-solid fa-heart text-danger"></i>
                             </button>
@@ -378,9 +395,15 @@ async function montarFavoritos() {
     container.innerHTML = cards.join('');
 
     document.querySelectorAll('.btn-favorito').forEach(btn => {
-        btn.addEventListener('click', async () => {
-            await toggleFavorito(btn.dataset.id, btn);
-            await montarFavoritos(); // Recarrega a lista
+        btn.addEventListener('click', () => {
+            toggleFavoritoLocal(btn.dataset.id, btn);
+            btn.closest('.col-6, .col-md-4, .col-lg-3').remove();
+            if (document.querySelectorAll('.btn-favorito').length === 0) {
+                container.innerHTML = `
+                    <div class="col-12 text-center py-4">
+                        <p class="text-muted">Você ainda não tem técnicas favoritas. <a href="index.html">Explorar técnicas</a></p>
+                    </div>`;
+            }
         });
     });
 }
@@ -390,8 +413,6 @@ async function montarFavoritos() {
 // ============================================================
 document.addEventListener('DOMContentLoaded', async () => {
     atualizarMenu();
-
-    const pagina = window.location.pathname;
 
     if (document.getElementById('carrossel-destaques')) {
         await montarCarrossel();
@@ -407,7 +428,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         await montarFavoritos();
     }
 
-    // Logout
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
         btnLogout.addEventListener('click', (e) => {
